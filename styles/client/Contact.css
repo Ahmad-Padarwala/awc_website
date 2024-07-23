@@ -1,0 +1,201 @@
+.contact_btn {
+  padding: 5px 20px;
+  background-color: #1386d3;
+  color: white;
+  border-radius: 30px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0px 20px 0px 0px;
+}
+
+.contact_title {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 52px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #1386d3;
+  margin-top: 20px;
+}
+
+.contact_second_title {
+  font-family: "Inter", sans-serif !important;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  margin-top: 5px;
+}
+
+.contact_second_title:after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  margin: 25px 0px;
+  background-color: #1386d3;
+}
+
+.contact_title .contact_second_title .contact_desc {
+  font-family: "Inter", sans-serif !important;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0em;
+  padding: 0px 0px 30px 0px;
+  border-bottom: 1px solid rgba(122, 122, 122, 0.863);
+}
+
+#main_contact {
+  max-width: 80%;
+  justify-content: center;
+  padding: 100px 0px 0px 0px;
+}
+
+.contact_address {
+  padding: 30px 0px 0px 0px;
+  font-family: "Inter", sans-serif !important;
+  font-size: 14px;
+  line-height: 30px;
+  letter-spacing: 0em;
+  width: 90%;
+  color: #424652;
+}
+
+.contact_address_title {
+  font-weight: 700;
+  color: black;
+}
+
+.contact_phone {
+  padding: 20px 0px 0px 0px;
+  font-family: "Inter", sans-serif !important;
+  font-size: 14px;
+  letter-spacing: 0em;
+  color: #424652;
+}
+
+.contact_phone a,
+.contact_email a {
+  color: #424652;
+}
+
+.contact_email {
+  padding: 20px 0px 0px 0px;
+  font-family: "Inter", sans-serif !important;
+  font-size: 14px;
+  letter-spacing: 0em;
+  color: #424652;
+}
+
+.text-xs {
+  font-size: 14px !important;
+  line-height: 22px !important;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif !important;
+  letter-spacing: 0.5px;
+}
+
+#form-lable-contact {
+  font-size: 14px;
+}
+
+.form-input-contact {
+  padding: 6px 20px;
+  font-size: 14px;
+  line-height: 26px;
+  color: #424652;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-action {
+  text-align: center;
+  padding-top: 0;
+}
+
+#contact_btn {
+  padding: 8px 25px;
+  font-size: 13px;
+}
+
+#contact_form {
+  padding: 20px;
+  margin: 0px;
+}
+
+.social_icons {
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin-right: 10px;
+  margin-top: 20px;
+  background-color: #eeeff0;
+  cursor: pointer;
+  color: black;
+}
+
+.contact_map {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 10px;
+  width: 50%;
+  height: 100%;
+  margin: 50px auto 50px auto;
+  border-radius: 5px;
+}
+
+.contact_map iframe {
+  width: 100%;
+  height: 400px;
+}
+
+.social_icons:hover {
+  background-color: #1386d3;
+  color: white;
+}
+
+#first_social_icon {
+  background-color: #1386d3;
+  color: white;
+}
+
+#first_social_icon a {
+  color: white;
+}
+
+@media screen and (max-width: 500px) {
+  #main_contact {
+    max-width: 100%;
+  }
+
+  #right_section {
+    padding: 5px;
+  }
+
+  .contact_address_title {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #right_section {
+    margin-top: 20px;
+  }
+
+  #main_contact {
+    padding-top: 50px;
+  }
+
+  .contact_map {
+    width: 95%;
+  }
+
+  .contact_map iframe {
+    width: 100%;
+    height: 300px;
+  }
+}

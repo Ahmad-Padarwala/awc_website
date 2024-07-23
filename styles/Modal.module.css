@@ -1,0 +1,82 @@
+/* styles/Modal.module.css */
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    z-index: 99;
+  }
+  
+  .modalHidden {
+    display: none;
+  }
+  
+  .modalContent {
+    background-color: #fff;
+    max-width: 600px;
+    min-height: 700px;
+    margin: 20px auto;
+    border-radius: 8px;
+  }
+  
+  .modalHeader {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modalTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .closeButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #777;
+  }
+  
+  .modalBody {
+    padding: 15px;
+  }
+  
+  .modalText {
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .modalFooter {
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .acceptButton, .declineButton {
+    padding: 8px 16px;
+    margin-left: 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .acceptButton {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .declineButton {
+    background-color: #fff;
+    color: #555;
+    border: 1px solid #ccc;
+  }
+  

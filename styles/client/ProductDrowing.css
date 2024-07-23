@@ -1,0 +1,103 @@
+.one-ifrme {
+  width: 30%;
+}
+
+.one-ifrme iframe {
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.one-ifrme p {
+  /* text-align: center; */
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-top: 20px;
+  line-height: 33px;
+  font-family: "Inter", sans-serif !important;
+}
+
+.one-ifrme button {
+  padding: 10px 20px;
+  height: 40px;
+  margin-left: 10px;
+  font-size: 15px;
+  background-color: #1386d3;
+  color: white;
+  border-radius: 25px;
+  font-family: "Inter", sans-serif !important;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+@media only screen and (min-width: 1150px) and (max-width: 1370px) {
+  .one-ifrme {
+    width: 30%;
+  }
+
+  .one-ifrme iframe {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1150px) {
+  .one-ifrme {
+    width: 35%;
+  }
+
+  .one-ifrme iframe {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 624px) and (max-width: 700px) {
+  .one-ifrme {
+    width: 80%;
+  }
+
+  .one-ifrme iframe {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+}
+@media only screen and (min-width: 500px) and (max-width: 624px) {
+  .one-ifrme {
+    width: 90%;
+  }
+
+  .one-ifrme iframe {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .one-ifrme p {
+    margin-left: 0px;
+  }
+}
+@media only screen and (min-width: 400px) and (max-width: 500px) {
+  .one-ifrme {
+    width: 90%;
+  }
+
+  .one-ifrme iframe {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .one-ifrme p {
+    margin-left: 0px;
+  }
+}
+@media only screen and (min-width: 310px) and (max-width: 400px) {
+  .one-ifrme {
+    width: 90%;
+  }
+
+  .one-ifrme iframe {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .one-ifrme p {
+    margin-left: 0px;
+  }
+}

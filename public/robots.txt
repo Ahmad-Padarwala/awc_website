@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Host
+Host: https://awcindia.in
+
+# Sitemaps
+Sitemap: https://awcindia.in/sitemap.xml

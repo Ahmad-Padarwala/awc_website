@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+.edit-row {
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+.edit-row input {
+  width: 100%;
+  /* Make the input fields span the entire cell */
+  padding: 8px;
+  /* Add some padding for better appearance */
+  box-sizing: border-box;
+  /* Include padding and border in the total width/height */
+}
+
+.edit-row button {
+  background-color: #4caf50;
+  /* Green */
+  color: white;
+  border: none;
+  padding: 8px 13px;
+  height: auto;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.edit-row button:hover {
+  background-color: #45a049;
+  /* Darker green on hover */
+}
+
+/* Optional: Style Cancel button differently */
+.edit-row button.cancel {
+  background-color: #f44336;
+  /* Red */
+}
+
+.status_btn {
+  cursor: pointer;
+  width: 40px;
+  height: 20px;
+  background-color: transparent;
+}
+.edit-row button.cancel:hover {
+  background-color: #d32f2f;
+  /* Darker red on hover */
+}
+
+svg {
+  display: inline;
+}

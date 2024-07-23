@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Hero Section Css */
+
+.gallery-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1920px;
+  padding: 0 15px;
+  position: relative;
+}
+
+.gallery-sec {
+  float: left;
+  width: 100%;
+  padding: 80px 100px 0 100px;
+  background: url("/assets/images/client/roof-water-proofing-banner.jpg") repeat !important;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+}
+
+.gallery-sec .gallery-main-inner .gallery-main-title {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 62px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.gallery-sec .gallery-main-inner .gallery-main-title .main-title-color {
+  color: #1386d3;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 62px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.gallery-sec .gallery-main-inner .gallery-main-title::after {
+  content: "";
+  display: block;
+  margin: 18px 0 25px;
+  width: 100px;
+  height: 2px;
+  background-color: #dff3e4;
+}
+
+.gallery-sec .gallery-main-inner p {
+  color: #e9eef3;
+  font-family: "Inter", sans-serif !important;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+.gallery-sec .gallery-main-inner .gallery-btn-sec {
+  display: flex;
+  margin-top: 50px;
+}
+
+/* .gallery-btn1 {
+  font-weight: 600;
+  padding: auto;
+  line-height: 15px;
+  margin-right: 20px;
+  background-color: #1386d3;
+}
+
+.gallery-btn1:hover {
+  background-color: #1386d3;
+} */
+
+.gallery-btn-primary {
+  text-decoration: none;
+  outline: 0;
+  background-color: #1386d3;
+  color: #ffffff;
+  border-radius: 30px;
+  font-family: "Inter", sans-serif !important;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: bold;
+  padding: 12px 30px;
+  text-transform: uppercase;
+  transition: all 0.35s;
+  border: 0;
+  cursor: pointer;
+}
+
+.gallery-btn1 {
+  padding: 15px 15px;
+  line-height: 20px;
+  margin-top: 40px;
+  height: auto;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #1386d3;
+  color: white;
+  border: 1px solid #fff;
+}
+
+.gallery-btn2 {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 15px 15px;
+  line-height: 20px;
+  margin-top: 40px;
+  height: auto;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Image section css */
+.gallery-image-sec {
+  padding: 100px;
+  float: left;
+  width: 100%;
+}
+
+.gallery-image-sec .gallery-image-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1920px;
+  padding: 0 15px;
+  position: relative;
+}
+
+#gallery-main-images {
+  padding: 5px;
+}
+
+.gallery-image-sec
+  .gallery-image-container
+  .gallery-image-main-inner
+  .gallery-inner-images {
+  padding-top: 8px;
+}
+.gallery-image-main-inner {
+  display: flex;
+  gap: 14px;
+}
+.gallery-image-main-inner img {
+  cursor: pointer;
+  transition: filter 0.6s ease; /* Adding a smooth transition for the hover effect */
+}
+
+.gallery-image-main-inner img:hover {
+  filter: brightness(0.6);
+}
+.gallery-image-sec .gallery-inner-images img {
+  border-radius: 10px;
+
+  transition: transform 0.8s ease-in-out;
+  transform: scale(0.9);
+}
+
+.gallery-image-sec .gallery-inner-images.on-scroll-effect img {
+  transform: scale(1);
+}
+
+.gallery-image-sec .gallery-inner-images {
+  transition: opacity 0.9s ease-in-out;
+}
+/* Responsive Desing */
+@media (max-width: 1450px) {
+  .gallery-image-sec .gallery-inner-images {
+    width: 100%;
+    height: auto;
+  }
+  .gallery-btn1 {
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #1386d3;
+    color: white;
+    border: 1px solid #fff;
+  }
+
+  .gallery-btn2 {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .gallery-image-sec {
+    padding: 20px;
+  }
+
+  .gallery-btn1 {
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #1386d3;
+    color: white;
+    border: 1px solid #fff;
+  }
+
+  .gallery-btn2 {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 991px) {
+  .gallery-image-sec {
+    padding: 20px;
+  }
+
+  .gallery-btn1 {
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #1386d3;
+    color: white;
+    border: 1px solid #fff;
+  }
+
+  .gallery-btn2 {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .gallery-sec {
+    padding: 30px;
+  }
+  .gallery-sec .gallery-main-inner .gallery-main-title,
+  .gallery-sec .gallery-main-inner .gallery-main-title .main-title-color {
+    font-size: 25px;
+    line-height: 50px;
+    margin: 0 0 30px 0;
+  }
+  .gallery-sec .gallery-main-inner p {
+    font-size: 13px;
+    line-height: 26px;
+  }
+
+  .gallery-btn1 {
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    margin-right: 10px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #1386d3;
+    color: white;
+    border: 1px solid #fff;
+  }
+
+  .gallery-btn2 {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    margin-right: 10px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .gallery-image-sec {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery-sec {
+    padding: 10px;
+  }
+
+  .gallery-btn1 {
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    margin-right: 10px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #1386d3;
+    color: white;
+    border: 1px solid #fff;
+  }
+
+  .gallery-btn2 {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 15px 15px;
+    line-height: 20px;
+    margin-top: 40px;
+    margin-right: 10px;
+    height: auto;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .gallery-image-sec {
+    padding: 10px;
+  }
+}
