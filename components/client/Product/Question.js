@@ -7,33 +7,28 @@ const Question = () => {
       question:
         "What types of surfaces can AWC waterproofing solutions be applied to?",
       answer:
-        "AWC waterproofing solutions are versatile and can be applied to a wide range of surfaces, including concrete, roofs, terraces, walls, and more.",
-    },
-    {
-      question: "How long does the waterproofing solution last?",
-      answer:
-        "AWC waterproofing solutions are versatile and can be applied to a wide range of surfaces, including concrete, roofs, terraces, walls, and more.",
+        "AWC waterproofing solutions are versatile and can be applied to a wide range of surfaces, including concrete, roofs, terraces, walls, and more.",
     },
     {
       question: "Are Your Products Environmentally Friendly?",
       answer:
-        "AWC waterproofing solutions are versatile and can be applied to a wide range of surfaces, including concrete, roofs, terraces, walls, and more.",
-    },
-    {
-      question:
-        "Can Your Waterproofing Solutions Be Applied In Extreme Weather Conditions?",
-      answer:
-        "AWC waterproofing solutions are versatile and can be applied to a wide range of surfaces, including concrete, roofs, terraces, walls, and more.",
+        "AWC India takes environmental impact seriously, And tries it's Best to deliver the best quality in the market while making it environment friendly.",
     },
     {
       question: "What Distinguishes AWC From Other Waterproofing Companies?",
       answer:
-        "AWC waterproofing solutions are versatile and can be applied to a wide range of surfaces, including concrete, roofs, terraces, walls, and more.",
+        "Patented Technology, Laser-Sharp focuses on Quality, Versatile Solutions, and Innovative Approaches.",
+    },
+    {
+      question:
+        "How long does the waterproofing solution last?",
+      answer:
+        "We offer three types of waterproofing solutions for the terrace & two External Wall Waterproofing solutions, addressing various needs. These options range from a Three to Five year solution to a more permanent, once-in-a-lifetime choice.",
     },
     {
       question: "How Do I Get A Quote Or Estimate For A Specific Project?",
       answer:
-        "AWC waterproofing solutions are versatile and can be applied to a wide range of surfaces, including concrete, roofs, terraces, walls, and more.",
+        "Through Contacting us By clicking on the Contact Us tab or Click on the Floating WhatsApp Icon.",
     },
   ];
 
@@ -79,9 +74,8 @@ const Question = () => {
                   />
                 </h3>
                 <div
-                  className={`accordion_body ${
-                    openIndex === index ? "show" : "hide"
-                  }`}
+                  className={`accordion_body ${openIndex === index ? "show" : "hide"
+                    }`}
                 >
                   <p>{faq.answer}</p>
                 </div>

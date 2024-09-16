@@ -19,12 +19,7 @@ const VisionMision = () => {
                     <h3>VISION</h3>
                     <h4>Setting the Standard for Waterproofing Excellence</h4>
                     <div className="text-justify">
-                      To be recognized as the best roof waterproofing, terrace
-                      waterproofing, external waterproofing company and the
-                      provider of waterproofing solutions in India. We aspire to
-                      set the industry standard by providing unparalleled
-                      quality and innovative products that exceed customer
-                      Expectations.
+                      To be recognized as the best roof waterproofing, terrace waterproofing, external waterproofing company and the provider of waterproofing solutions in India.
                     </div>
                   </div>
                 </div>
@@ -41,14 +36,7 @@ const VisionMision = () => {
                     <h3>MISSION</h3>
                     <h4>Building Trust through Quality</h4>
                     <div className="text-justify">
-                      To become India’s leading waterproofing company and
-                      waterproofing contractor that exceed its customer’s
-                      expectations. To provide the best quality roof
-                      waterproofing solutions, terrace waterproofing solutions,
-                      and exterior wall waterproofing solutions by introducing
-                      innovative products in these categories. To constantly
-                      care for & support our applicator community by upgrading
-                      their knowledge levels
+                      To become India’s leading waterproofing company and waterproofing contractor that exceed its customer’s expectations. To provide the best quality roof waterproofing solutions, terrace waterproofing solutions, and exterior wall waterproofing solutions by introducing innovative products in these categories. To constantly care for & support our applicator community by upgrading their knowledge levels & skill sets thus becoming the leading provider of roof leakage solutions in India.
                     </div>
                   </div>
                 </div>

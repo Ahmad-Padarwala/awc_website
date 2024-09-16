@@ -53,11 +53,7 @@ const Timeline = () => {
                   <h6>KNOWLEDGE</h6>
                   <img src={"/assets/images/client/Line.svg"} />
                   <p>
-                    we Started in 2008 with small application company now in
-                    2015 we have 2 unit & have developed ourselves as an pure
-                    manufacturing company in the field of specialized,
-                    sustainable coating company Thats we call a constant
-                    knowledge up gradation
+                    we Started in 2008 with small application company now in 2015 we have 2 unit & have developed ourselves as an pure manufacturing company in the field of specialized, sustainable coating company Thats we call a constant knowledge up gradation
                   </p>
                 </div>
               </div>
@@ -66,9 +62,7 @@ const Timeline = () => {
                   <h6>SKILL</h6>
                   <img src={"/assets/images/client/Line.svg"} />
                   <p>
-                    We specialize in safeguarding your home with expert roofing
-                    solutions. From installations to repairs, trust us for a
-                    secure and enduring roof.
+                    We specialize in safeguarding your home with expert roofing solutions. From installations to repairs, trust us for a secure and enduring roof.
                   </p>
                 </div>
               </div>
@@ -77,9 +71,7 @@ const Timeline = () => {
                   <h6>TRAINING</h6>
                   <img src={"/assets/images/client/Line.svg"} />
                   <p>
-                    Our expertise lies in safeguarding homes with top-tier
-                    roofing solutions. From installations to repairs, entrust us
-                    with ensuring the security and longevity of your roof.
+                    Our expertise lies in safeguarding homes with top-tier roofing solutions. From installations to repairs, entrust us with ensuring the security and longevity of your roof.
                   </p>
                 </div>
               </div>
@@ -88,10 +80,7 @@ const Timeline = () => {
                   <h6>INNOVATIONS</h6>
                   <img src={"/assets/images/client/Line.svg"} />
                   <p>
-                    We understand that Innovation is crucial when it comes to
-                    staying ahead of the curve. Hence we attempt to continuously
-                    innovate all our processes as this is what will make us
-                    truly world-class.
+                    We understand that Innovation is crucial when it comes to staying ahead of the curve. Hence we attempt to continuously innovate all our processes as this is what will make us truly world-class.
                   </p>
                 </div>
               </div>

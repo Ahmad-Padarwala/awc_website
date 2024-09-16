@@ -122,18 +122,7 @@ const Certificate = () => {
                   <div className="xl-6 lg-6 md-12 sm-12">
                     <h6>IGBC MEMBER</h6>
                     <p>
-                      The Indian Green Building Council (IGBC) is a part of the
-                      Confederation of Indian Industry (CII) since the year
-                      2001. Its vision is "To enable a sustainable built
-                      environment for all and facilitate India to be one of the
-                      global leaders in the sustainable built environment by
-                      2025".The prestigious IGBC membership provides AWC with
-                      access to resources2C international best practices and the
-                      latest in the field of Green building initiatives thus
-                      giving us the crucial competitive advantage. AWC is proud
-                      to be in the company of experts, professionals and
-                      multi-industry organizations that are at the forefront of
-                      creating the green building revolution in India.
+                      The Indian Green Building Council (IGBC) is a part of the Confederation of Indian Industry (CII) since the year 2001. Its vision is "To enable a sustainable built environment for all and facilitate India to be one of the global leaders in the sustainable built environment by 2025". The prestigious IGBC membership provides AWC with access to resources, international best practices and the latest in the field of Green building initiatives thus giving us the crucial competitive advantage. AWC is proud to be in the company of experts, professionals and multi-industry organizations that are at the forefront of creating the green building revolution in India.
                     </p>
                   </div>
                   <div className="xl-6 lg-6 md-12 sm-12">
