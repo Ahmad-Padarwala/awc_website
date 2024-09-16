@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -13,10 +13,9 @@ const HeroSection = () => {
   const getProductData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-view/getproduct/${productId}`
       );
-      console.log(response.data[0])
       setProducts(response.data[0]);
       setLoading(false);
     } catch (error) {

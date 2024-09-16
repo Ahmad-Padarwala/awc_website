@@ -4,6 +4,7 @@ import conn from "../dbconfig/conn";
 import path from "path";
 import { IncomingForm } from "formidable";
 import fs from "fs";
+import { checkApiAuth } from "../authmiddleware";
 const { unlink } = require("fs").promises;
 
 export const config = {
@@ -13,6 +14,8 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   const { id } = req.query; // Get the dynamic ID from the URL parameter
 
   if (req.method === "GET") {
@@ -45,7 +48,6 @@ export default async function handler(req, res) {
 
       // Query for delete category
       const q = "DELETE FROM blog_category WHERE blog_cate_id = ?";
-      console.log(id)
       const [rows] = await conn.query(q, [id]);
 
       // check image awailable or not
@@ -109,7 +111,6 @@ export default async function handler(req, res) {
           category_image,
           category_icon,
         } = fields;
-        console.log(fields);
 
         let sql = "";
         let params = [];

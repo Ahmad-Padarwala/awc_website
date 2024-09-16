@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRouter } from "next/router";
 import Loading from "@/layouts/Loading";
@@ -36,7 +36,7 @@ const EditBlog = () => {
   // get active category
   const getActiveCategoryData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/blogcategory/router`
       );
       setGetActiveCateData(response.data);
@@ -50,7 +50,7 @@ const EditBlog = () => {
   // get blog with id
   const getBlogCategoryForEdit = async (blogId) => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/blog/${blogId}`
       );
       setEditBlogData(response.data[0]);
@@ -129,18 +129,16 @@ const EditBlog = () => {
       formdata.append("canonical_url", editBlogData?.canonical_url);
       formdata.append("blog_thumbnail", editBlogData?.blog_thumbnail);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/blog/${blogId}`,
         formdata
       );
       window.scrollTo({ behavior: "smooth", top: 0 });
       setLoading(false);
       router.push("/admin/blog");
-      console.log("correct");
     } catch (error) {
       ErrorToast(error?.response?.data?.message);
       setLoading(false);
-      console.log("incorrect");
     }
   };
 

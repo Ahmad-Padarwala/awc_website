@@ -1,5 +1,5 @@
 import Toast, { ErrorToast } from "@/layouts/toast/Toast";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
@@ -28,10 +28,10 @@ const AdminLogin = () => {
       password: loginData.password,
     };
     const url = `${process.env.NEXT_PUBLIC_API_URL}/login/router`;
-    axios
+    axiosInstance
       .post(url, data)
       .then((response) => {
-        localStorage.setItem("token", response.data.token); // Save token  in local storage
+        localStorage.setItem("token", response.data.token);
         router.push("/admin/admindashboard");
       })
       .catch((error) => {

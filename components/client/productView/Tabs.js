@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
@@ -20,7 +20,7 @@ const Tabs = () => {
   const getProductData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-view/getproduct/${productId}`
       );
       setProducts(response.data[0].product_long_desc);
@@ -48,7 +48,7 @@ const Tabs = () => {
   const getProductImages = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-view/getproductimage/${productId}`
       );
       setProductImage(response.data);
@@ -62,7 +62,7 @@ const Tabs = () => {
   const getProductVideo = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-view/getproductvideo/${productId}`
       );
       setProductVideo(response.data);
@@ -76,7 +76,7 @@ const Tabs = () => {
   const getProductCertificate = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-view/getproductcertificate/${productId}`
       );
       setProductCertificate(response.data);
@@ -90,7 +90,7 @@ const Tabs = () => {
   const getProductDocs = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-view/getproductdocs/${productId}`
       );
       setProductDocs(response.data);
@@ -103,7 +103,7 @@ const Tabs = () => {
   const getProductDrowing = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-view/getproductdrawing/${productId}`
       );
       setProductDrowing(response.data);
@@ -133,14 +133,12 @@ const Tabs = () => {
   const [CategoryProduct, setCategoryProduct] = useState([]);
 
   const getCategoryProducts = async (data) => {
-    console.log(data);
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-category/category-products/${data}`
       );
       setCategoryProduct(response.data);
-      console.log(response.data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);

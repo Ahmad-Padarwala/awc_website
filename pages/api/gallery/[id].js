@@ -3,6 +3,7 @@ import path from "path";
 import { IncomingForm } from "formidable";
 import fs from "fs";
 import { unlink, copyFile } from "fs/promises"; // Import copyFile function
+import { checkApiAuth } from "../authmiddleware";
 
 export const config = {
   api: {
@@ -11,6 +12,8 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   const { id } = req.query; // Get the dynamic ID from the URL parameter
   if (req.method == "GET") {
     try {

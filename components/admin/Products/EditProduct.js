@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRouter } from "next/router";
 import Loading from "@/layouts/Loading";
@@ -161,7 +161,7 @@ const EditProduct = () => {
   // GET ACTIVE CATEGORY
   const getActiveCategoryData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/productcategorychanges/router`
       );
       setGetActiveCateData(response.data);
@@ -175,7 +175,7 @@ const EditProduct = () => {
   //GET PRODUCT DATA WHICH IS SELECT FOR EDIT
   const getProductCategoryForEdit = async (prodId) => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/${prodId}`
       );
       setEditProductData(response.data[0]);
@@ -298,7 +298,7 @@ const EditProduct = () => {
       formdata.append("product_image", editProductData?.product_image);
       formdata.append("product_brochure", editProductData?.product_brochure);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/${prodId}`,
         formdata
       );
@@ -363,7 +363,7 @@ const EditProduct = () => {
   // get all Docs of product
   const getAllProductDocs = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdocs/${prodId}`
       );
       setAllProductDocs(response.data);
@@ -410,7 +410,6 @@ const EditProduct = () => {
   };
 
   const handleDocsDetailsChange = (index, field, value) => {
-    console.log(addMultiDocs);
     setAddMultiDocs((prevMultiDocs) => {
       const updatedImages = [...prevMultiDocs.product_docs];
       updatedImages[index][field] = value;
@@ -423,7 +422,6 @@ const EditProduct = () => {
 
   const saveMultipleDocs = async (e) => {
     e.preventDefault();
-    console.log(allProductDocs);
     window.scrollTo({ behavior: "smooth", top: 0 });
     if (addMultiDocs.product_docs.length == 0) {
       ErrorToast("please atleast one doc select");
@@ -437,7 +435,7 @@ const EditProduct = () => {
         formdata.append(`product_docs`, docs.file);
         formdata.append(`docs_title_${index}`, docs.docs_title);
       });
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdocs/router`,
         formdata
       );
@@ -454,7 +452,7 @@ const EditProduct = () => {
   const deleteProductdocs = async (deleteId) => {
     setLoading(true);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdocs/${deleteId}`
       );
       getAllProductDocs();
@@ -469,7 +467,7 @@ const EditProduct = () => {
   // get all certificate of product
   const getAllProductCertificate = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productcertificate/${prodId}`
       );
       setAllProductCertificate(response.data);
@@ -546,7 +544,7 @@ const EditProduct = () => {
         formdata.append(`product_certificate`, docs.file);
         formdata.append(`certificate_title_${index}`, docs.certificate_title);
       });
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productcertificate/router`,
         formdata
       );
@@ -563,7 +561,7 @@ const EditProduct = () => {
   const deleteProductcertificate = async (deleteId) => {
     setLoading(true);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productcertificate/${deleteId}`
       );
       getAllProductCertificate();
@@ -607,7 +605,7 @@ const EditProduct = () => {
       formdata.append("certificate_link", editCertificate?.certificate_link);
       formdata.append("certificate_title", editCertificate?.certificate_title);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productcertificate/perdocdata/${prodDocsId}`,
         formdata
       );
@@ -626,7 +624,7 @@ const EditProduct = () => {
   const productCertificateStatusChange = async (certiId, no) => {
     setLoading(true);
     try {
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productcertificate/statuschanges/${certiId}/${no}`
       );
       getAllProductCertificate();
@@ -641,7 +639,7 @@ const EditProduct = () => {
   const productDocsStatusChange = async (docId, no) => {
     setLoading(true);
     try {
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdocs/statuschanges/${docId}/${no}`
       );
       getAllProductDocs();
@@ -683,7 +681,7 @@ const EditProduct = () => {
       formdata.append("pdf_link", editDoc?.pdf_link);
       formdata.append("pdf_title", editDoc?.pdf_title);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdocs/perdocdata/${prodDocsId}`,
         formdata
       );
@@ -707,7 +705,7 @@ const EditProduct = () => {
   // get all images of product
   const getAllProductImages = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productimages/${prodId}`
       );
       setAllProductImages(response.data);
@@ -728,12 +726,10 @@ const EditProduct = () => {
       return;
     }
     setLoading(true);
-    console.log(addMultiImages);
     try {
       const formdata = new FormData();
       formdata.append("product_id", prodId);
       addMultiImages.product_images.forEach((image, index) => {
-        console.log(image);
         formdata.append(`product_images`, image.file);
         formdata.append(`image_title_${index}`, image.image_title);
         formdata.append(`sort_image_${index}`, image.sort_image);
@@ -741,7 +737,7 @@ const EditProduct = () => {
         formdata.append(`image_height_${index}`, image.image_height);
         formdata.append(`alternative_${index}`, image.alternative);
       });
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productimages/router`,
         formdata
       );
@@ -758,7 +754,7 @@ const EditProduct = () => {
   const productImageStatusChange = async (imgId, no) => {
     setLoading(true);
     try {
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productimages/statuschanges/${imgId}/${no}`
       );
       getAllProductImages();
@@ -823,7 +819,7 @@ const EditProduct = () => {
   const deleteProductImg = async (deleteId) => {
     setLoading(true);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productimages/${deleteId}`
       );
       getAllProductImages();
@@ -887,7 +883,7 @@ const EditProduct = () => {
       formdata.append("image_width", editperimg?.image_width);
       formdata.append("sort_image", editperimg?.sort_image);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productimages/perimgdata/${proImgId}`,
         formdata
       );
@@ -916,7 +912,6 @@ const EditProduct = () => {
   //end
   //HANDLE VEDIO CONTENT SAVE
   const handleVedioContentChange = (event) => {
-    console.log(event);
     const { name, value } = event.target;
     setAddProductVedio((prevContData) => ({
       ...prevContData,
@@ -950,7 +945,7 @@ const EditProduct = () => {
   const productVideosStatusChange = async (imgId, no) => {
     setLoading(true);
     try {
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productvedios/statuschanges/${imgId}/${no}`
       );
       getAllProductVedios();
@@ -964,7 +959,7 @@ const EditProduct = () => {
   // GET ALL PRODUCT VIDEOS FOR SHOWING WHEN ADD IN VIDEOS TAB
   const getAllProductVedios = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productvedios/${prodId}`
       );
       setAllProductVedios(response.data);
@@ -979,7 +974,7 @@ const EditProduct = () => {
   const deleteProductVideos = async (deleteId) => {
     setLoading(true);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productvedios/${deleteId}`
       );
       getAllProductVedios();
@@ -1005,7 +1000,6 @@ const EditProduct = () => {
       return false;
     }
     setLoading(true);
-    console.log(addProductVedio);
     try {
       const formdata = new FormData();
       formdata.append("product_id", prodId);
@@ -1020,7 +1014,7 @@ const EditProduct = () => {
 
       const method = editingVedioId ? "patch" : "post";
 
-      await axios[method](url, formdata);
+      await axiosInstance[method](url, formdata);
 
       setLoading(false);
       if (editingVedioId) {
@@ -1048,7 +1042,7 @@ const EditProduct = () => {
   const productDrawingStatusChange = async (docId, no) => {
     setLoading(true);
     try {
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdrawing/statuschanges/${docId}/${no}`
       );
       getAllProductDrawing();
@@ -1063,7 +1057,7 @@ const EditProduct = () => {
   const deleteProductDrawing = async (deleteId) => {
     setLoading(true);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdrawing/${deleteId}`
       );
       getAllProductDrawing();
@@ -1101,14 +1095,12 @@ const EditProduct = () => {
   };
 
   const handleUpdateDrawingClick = async (prodDocsId) => {
-    console.log(editDrawing);
-    console.log(prodDocsId);
     try {
       const formdata = new FormData();
       formdata.append("pdf_link", editDrawing?.pdf_link);
       formdata.append("pdf_title", editDrawing?.pdf_title);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdrawing/perdrawingdata/${prodDocsId}`,
         formdata
       );
@@ -1171,7 +1163,6 @@ const EditProduct = () => {
   const saveMultipleDrawing = async (e) => {
     e.preventDefault();
     window.scrollTo({ behavior: "smooth", top: 0 });
-    console.log(addMultiDrawing);
     if (addMultiDrawing.product_drawing.length == 0) {
       ErrorToast("please atleast one Drawing select");
       return false;
@@ -1184,7 +1175,7 @@ const EditProduct = () => {
         formdata.append(`product_drawing`, docs.file);
         formdata.append(`drawing_title_${index}`, docs.drawing_title);
       });
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdrawing/router`,
         formdata
       );
@@ -1192,7 +1183,6 @@ const EditProduct = () => {
       getAllProductDrawing();
       setAddMultiDrawing({ product_drawing: [] });
       setActiveTab("drawing");
-      console.log("hiii");
     } catch (error) {
       console.log("Error adding prod images" + error);
       setLoading(false);
@@ -1202,7 +1192,7 @@ const EditProduct = () => {
   // get all Docs of product
   const getAllProductDrawing = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdrawing/${prodId}`
       );
       setAllProductDrawing(response.data);

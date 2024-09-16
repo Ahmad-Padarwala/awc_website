@@ -2,7 +2,7 @@ import Header from "@/layouts/Header";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Toast, { ErrorToast, SuccessToast } from "@/layouts/toast/Toast";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import DeleteModal from "@/layouts/DeleteModal";
 
 const GalleryCategory = () => {
@@ -41,7 +41,7 @@ const GalleryCategory = () => {
 
       if (editMode) {
         // If in edit mode, send a PATCH request
-        await axios.patch(
+        await axiosInstance.patch(
           `${process.env.NEXT_PUBLIC_API_URL}/gallerycategory/${galleryCategoryId}`,
           data
         );
@@ -53,7 +53,7 @@ const GalleryCategory = () => {
         SuccessToast("Gallery Category Updated Successfully");
       } else {
         // If not in edit mode, send a POST request
-        const res = await axios.post(
+        const res = await axiosInstance.post(
           `${process.env.NEXT_PUBLIC_API_URL}/gallerycategory/router`,
           data
         );
@@ -87,7 +87,7 @@ const GalleryCategory = () => {
   const [getAllGalleryCategory, setGetAllGalleryCategory] = useState([]);
 
   const getAllGalleryCategoryData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/gallerycategory/router`)
       .then((res) => {
         setGetAllGalleryCategory(res.data);
@@ -130,7 +130,7 @@ const GalleryCategory = () => {
 
     try {
       // Fetch category details
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/gallerycategory/${galleryCategoryId}`
       );
 
@@ -178,7 +178,7 @@ const GalleryCategory = () => {
   const deleteGalleryCategoryData = async (deleteGalleryCategoryId) => {
     setLoading(true);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/gallerycategory/${deleteGalleryCategoryId}`
       );
       // Move closeDeleteModal and SuccessToast here to ensure they are called after the deletion is successful

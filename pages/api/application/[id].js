@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import conn from "../dbconfig/conn";
 import path from "path";
 import { IncomingForm } from "formidable";
-const { unlink } = require("fs").promises;
+import { checkApiAuth } from "../authmiddleware";
 
 export const config = {
   api: {
@@ -38,6 +38,10 @@ const sendEmail = async (email, subject, text) => {
 };
 
 export default async function handler(req, res) {
+
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
+
   const { id } = req.query; // Get the dynamic ID from the URL parameter
   if (req.method === "POST") {
     try {
@@ -88,7 +92,6 @@ export default async function handler(req, res) {
         // Delete the resume file
         try {
           await fs.access(resumePath);
-          console.log(`Deleting file: ${resumePath}`);
           await fs.unlink(resumePath);
         } catch (error) {
           console.error(

@@ -1,6 +1,9 @@
+import { checkApiAuth } from "../../authmiddleware";
 import conn from "../../dbconfig/conn";
 
 export default async function handler(req, res) {
+    const isAuthenticated = checkApiAuth(req, res);
+    if (!isAuthenticated) return;
     if (req.method == "GET") {
         try {
             const socialQuery = "SELECT * FROM `social_links`";

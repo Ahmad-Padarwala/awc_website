@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "@/layouts/Header";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 import Toast, { ErrorToast } from "@/layouts/toast/Toast";
 
 const Dashboard = () => {
@@ -12,7 +12,7 @@ const Dashboard = () => {
   //getall catergory data
   const getAllCategoryData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/productcategory/router`
       );
       setProductCategory(response.data.length);
@@ -22,7 +22,7 @@ const Dashboard = () => {
   };
   //all product data
   const getAllProductData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/products/router`)
       .then((res) => {
         setProductData(res.data.length);
@@ -33,7 +33,7 @@ const Dashboard = () => {
   };
   //get all blog category
   const getAllBlogCategoryData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/blogcategory/router`)
       .then((res) => {
         setBlogCategory(res.data.length);
@@ -44,7 +44,7 @@ const Dashboard = () => {
   };
   // get all blog data
   const getAllBlogData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/blog/router`)
       .then((res) => {
         setBlogData(res.data.length);

@@ -2,6 +2,7 @@ import conn from "../dbconfig/conn";
 import path from "path";
 import { IncomingForm } from "formidable";
 import fs from "fs";
+import { checkApiAuth } from "../authmiddleware";
 const { unlink } = require("fs").promises;
 
 export const config = {
@@ -11,6 +12,8 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   const { id } = req.query; // Get the dynamic ID from the URL parameter
 
   // Handling GET request for fetching a specific testimonial

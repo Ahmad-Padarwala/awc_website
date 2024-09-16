@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -12,10 +12,9 @@ const Contact = ({ cid }) => {
   const getTestimonial = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-category/testimonials/router`
       );
-      console.log(response.data);
       setTestimonial(response.data);
       setLoading(false);
     } catch (error) {
@@ -119,7 +118,7 @@ const Contact = ({ cid }) => {
       formdata.append("number", addFormData.number);
       formdata.append("message", addFormData.message);
 
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/client/contact/contactform/router`,
         formdata
       );
@@ -140,7 +139,7 @@ const Contact = ({ cid }) => {
   useEffect(() => {
     const checkEmail = async () => {
       try {
-        const res = await axios.get(
+        const res = await axiosInstance.get(
           `${process.env.NEXT_PUBLIC_API_URL}/client/contact/contactform/router`
         );
 

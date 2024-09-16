@@ -1,3 +1,4 @@
+import { checkApiAuth } from "@/pages/api/authmiddleware";
 import conn from "../../../dbconfig/conn";
 import { IncomingForm } from "formidable";
 import nodemailer from "nodemailer";
@@ -9,14 +10,14 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   if (req.method === "GET") {
     try {
       // Query the database to fetch all contact details
       const fetchQuery = "SELECT email FROM `contact_form`";
       // Execute the query
       const [rows] = await conn.query(fetchQuery);
-      console.log(rows);
-
       // Process the data and send the response
       res.status(200).json(rows);
     } catch (err) {
@@ -29,7 +30,6 @@ export default async function handler(req, res) {
     form.parse(req, async (err, fields, files) => {
       try {
         const { name, email, number, message } = fields;
-        console.log(fields);
         // Database operation
         const [row] = await conn.query("INSERT INTO contact_form SET ? ", {
           name: name,
@@ -37,7 +37,6 @@ export default async function handler(req, res) {
           mobile: number,
           message: message,
         });
-        console.log("row :", row);
         // Send email
         await sendContactEmail({ name, email, number, message });
         res.status(200).json(row);

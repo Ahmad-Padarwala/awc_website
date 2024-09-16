@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Link from "next/link";
 import Header from "@/layouts/Header";
 import DeleteModal from "@/layouts/DeleteModal";
@@ -50,7 +50,7 @@ const BlogCategory = () => {
   //get blog category
   const getAllBlogCategoryData = async () => {
     setLoading(true);
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/blogcategory/router`)
       .then((res) => {
         setGetAllBlogCategory(res.data);
@@ -72,7 +72,7 @@ const BlogCategory = () => {
   const catgoryStatusChange = async (cateId, no) => {
     try {
       setLoading(true);
-      const res = await axios.patch(
+      const res = await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/blogcategory/statuschanges/${cateId}/${no}`
       );
       setLoading(false);
@@ -86,13 +86,12 @@ const BlogCategory = () => {
   //delete blog category
   const deletBlogCategory = async (cateId) => {
     setLoading(true);
-    await axios
+    await axiosInstance
       .delete(`${process.env.NEXT_PUBLIC_API_URL}/blogcategory/${cateId}`)
       .then((res) => {
         setLoading(false);
         getAllBlogCategoryData();
         SuccessToast("Category Deleted Successfully");
-        console.log("object")
       })
       .catch((err) => {
         ErrorToast(err?.response?.data?.message);

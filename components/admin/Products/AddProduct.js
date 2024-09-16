@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRouter } from "next/router";
 import Header from "@/layouts/Header";
@@ -63,7 +63,7 @@ const AddProduct = () => {
   // GET ALL PRODUCT IMAGES FOR SHOWING WHEN ADD IN IMAGES TAB
   const getAllProductImages = async (prodId) => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productimages/${prodId}`
       );
       setAllProductImages(response.data);
@@ -94,7 +94,7 @@ const AddProduct = () => {
   const getActiveCategoryData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/productcategorychanges/router`
       );
       setGetActiveCateData(response.data);
@@ -158,7 +158,6 @@ const AddProduct = () => {
       return false;
     }
     setLoading(true);
-    console.log(addProductData);
     try {
       const formdata = new FormData();
       formdata.append("cate_id", addProductData.cate_id);
@@ -172,7 +171,7 @@ const AddProduct = () => {
       formdata.append("meta_tag", addMetaTag);
       formdata.append("meta_keyword", addMetaKeyword);
 
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/router`,
         formdata
       );
@@ -189,7 +188,7 @@ const AddProduct = () => {
 
   //LAST ADDED PRODUCT DATA
   const getLastAddedData = async () => {
-    axios
+    axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/products/getlastdata/router`)
       .then((res) => {
         setLastAddId(res.data[0]);
@@ -205,7 +204,7 @@ const AddProduct = () => {
   // get all Docs of product
   const getAllProductDocs = async (prodId) => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdocs/${prodId}`
       );
       setAllProductDocs(response.data);
@@ -276,7 +275,7 @@ const AddProduct = () => {
         formdata.append(`product_docs`, docs.file);
         formdata.append(`docs_title_${index}`, docs.docs_title);
       });
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdocs/router`,
         formdata
       );
@@ -364,7 +363,7 @@ const AddProduct = () => {
         formdata.append(`image_height_${index}`, image.image_height);
         formdata.append(`alternative_${index}`, image.alternative);
       });
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productimages/router`,
         formdata
       );
@@ -425,7 +424,7 @@ const AddProduct = () => {
   // GET ALL PRODUCT IMAGES FOR SHOWING WHEN ADD IN IMAGES TAB
   const getAllProductVedios = async (prodId) => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productvedios/${prodId}`
       );
       setAllProductVedios(response.data);
@@ -460,7 +459,7 @@ const AddProduct = () => {
       formdata.append("vedio_description", addProductVedio.vedio_description);
       formdata.append("vedio_thumbnail", addProductVedio.vedio_thumbnail);
 
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productvedios/router`,
         formdata
       );
@@ -523,7 +522,7 @@ const AddProduct = () => {
   // get all Certifiacte of product
   const getAllProductCertificate = async (prodId) => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productcertificate/${prodId}`
       );
       setAllProductCertificate(response.data);
@@ -597,7 +596,7 @@ const AddProduct = () => {
         formdata.append(`product_certificate`, docs.file);
         formdata.append(`certificate_title_${index}`, docs.certificate_title);
       });
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productcertificate/router`,
         formdata
       );
@@ -605,7 +604,6 @@ const AddProduct = () => {
       getAllProductCertificate(lastAddId.product_id);
       setAddMultiCertificate({ product_certificate: [] });
       setActiveTab("certificate");
-      console.log("hiii");
     } catch (error) {
       console.log("Error adding prod images" + error);
       setLoading(false);
@@ -662,7 +660,6 @@ const AddProduct = () => {
   const saveMultipleDrawing = async (e) => {
     e.preventDefault();
     window.scrollTo({ behavior: "smooth", top: 0 });
-    console.log(addMultiDrawing);
     if (addMultiDrawing.product_drawing.length == 0) {
       ErrorToast("please atleast one Drawing select");
       return false;
@@ -675,7 +672,7 @@ const AddProduct = () => {
         formdata.append(`product_drawing`, docs.file);
         formdata.append(`drawing_title_${index}`, docs.drawing_title);
       });
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdrawing/router`,
         formdata
       );
@@ -683,7 +680,6 @@ const AddProduct = () => {
       getAllProductDrawing(lastAddId.product_id);
       setAddMultiDrawing({ product_drawing: [] });
       setActiveTab("drawing");
-      console.log("hiii");
     } catch (error) {
       console.log("Error adding prod images" + error);
       setLoading(false);
@@ -693,7 +689,7 @@ const AddProduct = () => {
   // get all Docs of product
   const getAllProductDrawing = async (prodId) => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/products/productdrawing/${prodId}`
       );
       setAllProductDrawing(response.data);

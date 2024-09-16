@@ -2,6 +2,7 @@ import conn from "../dbconfig/conn";
 import path from "path";
 import { IncomingForm } from "formidable";
 import fs from "fs";
+import { checkApiAuth } from "../authmiddleware";
 
 export const config = {
   api: {
@@ -10,6 +11,8 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   if (req.method == "POST") {
     const form = new IncomingForm();
     form.parse(req, (err, fields, files) => {
@@ -54,7 +57,6 @@ export default async function handler(req, res) {
           res.status(500).json({ message: "File Upload failed." });
         } else {
           try {
-            console.log(fields);
             // db operation
             const {
               category_name,
@@ -99,9 +101,7 @@ export default async function handler(req, res) {
       // Query the database
 
       const q = "SELECT * FROM `product_category`";
-      console.log(q);
       const [rows] = await conn.query(q);
-      console.log(rows);
       // Process the data and send the response
       res.status(200).json(rows);
     } catch (err) {

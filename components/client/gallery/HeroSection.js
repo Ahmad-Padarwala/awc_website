@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import React, { useEffect, useState } from "react";
 
 const HeroSection = ({ onSelectCategory, selectedCategory }) => {
@@ -12,7 +12,7 @@ const HeroSection = ({ onSelectCategory, selectedCategory }) => {
   const getCategories = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/gallery/allcategory/router`
       );
       setAllProdCategory(response.data);

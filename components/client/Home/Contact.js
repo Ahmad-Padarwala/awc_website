@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import React, { useEffect, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -62,7 +62,7 @@ const Contact = () => {
       formdata.append("number", addFormData.number);
       formdata.append("message", addFormData.message);
 
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/client/contact/contactform/router`,
         formdata
       );
@@ -83,7 +83,7 @@ const Contact = () => {
   useEffect(() => {
     const checkEmail = async () => {
       try {
-        const res = await axios.get(
+        const res = await axiosInstance.get(
           `${process.env.NEXT_PUBLIC_API_URL}/client/contact/contactform/router`
         );
 

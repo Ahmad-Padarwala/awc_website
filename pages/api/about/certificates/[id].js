@@ -2,6 +2,7 @@ import conn from "../../dbconfig/conn";
 import path from "path";
 import fs from "fs";
 import { IncomingForm } from "formidable";
+import { checkApiAuth } from "../../authmiddleware";
 const { unlink } = require("fs").promises;
 
 export const config = {
@@ -11,6 +12,9 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
+
   // Handling DELETE request for deleting certificates
   const { id } = req.query;
   if (req.method === "DELETE") {
@@ -53,7 +57,6 @@ export default async function handler(req, res) {
 
           try {
             await fs.access(thumbnailPath);
-            console.log(`Deleting file: ${thumbnailPath}`);
             await fs.unlink(thumbnailPath);
           } catch (error) {
             console.error(
@@ -78,7 +81,6 @@ export default async function handler(req, res) {
     try {
       const form = new IncomingForm();
       form.parse(req, async (err, fields, files) => {
-        console.log(fields);
         const { title, pdf, thumbnail } = fields; // Assuming you have an 'id' field in the form
 
         let sql = "";
@@ -109,7 +111,6 @@ export default async function handler(req, res) {
                 );
                 try {
                   await fs.access(oldFilePath);
-                  console.log(`Deleting file: ${oldFilePath}`);
                   await fs.unlink(oldFilePath);
                 } catch (error) {
                   console.error(
@@ -175,7 +176,6 @@ export default async function handler(req, res) {
           params = [title, updatedPdf, updatedThumbnail, 1, id];
         }
         const result = await conn.query(sql, params);
-        console.log(result);
         res.status(200).json(result);
       });
     } catch (err) {

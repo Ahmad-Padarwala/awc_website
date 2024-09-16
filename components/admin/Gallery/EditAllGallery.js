@@ -6,7 +6,7 @@ import Toast, {
   SuccessToast,
   WarningToast,
 } from "@/layouts/toast/Toast";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { useRouter } from "next/router";
 
 const EditAllGallery = () => {
@@ -27,7 +27,7 @@ const EditAllGallery = () => {
     const fetchDataForCategory = async () => {
       try {
         // Fetch data for the category using id
-        const response = await axios.get(
+        const response = await axiosInstance.get(
           `${process.env.NEXT_PUBLIC_API_URL}/gallery/${categoryId}`
         );
         // Assuming the response contains an array of items
@@ -131,7 +131,7 @@ const EditAllGallery = () => {
           updatedFormData.append("gallery_image", selectedImage);
         }
         // Perform the PATCH request to update the item
-        const res = await axios.patch(
+        const res = await axiosInstance.patch(
           `${process.env.NEXT_PUBLIC_API_URL}/gallery/${item.id}`,
           updatedFormData,
           {
@@ -162,7 +162,7 @@ const EditAllGallery = () => {
 
   const getAllGalleryCategoryData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/gallerycategory/router`
       );
       setGetAllGalleryCategory(response.data);

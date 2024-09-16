@@ -3,6 +3,7 @@ import conn from "../../dbconfig/conn";
 import path from "path";
 import fs from "fs";
 import { IncomingForm } from "formidable";
+import { checkApiAuth } from "../../authmiddleware";
 const { unlink } = require("fs").promises;
 
 export const config = {
@@ -12,6 +13,9 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
+
   const { id } = req.query; // Get the dynamic ID from the URL parameter
   if (req.method === "DELETE") {
     try {
@@ -43,7 +47,6 @@ export default async function handler(req, res) {
         // Delete the video thumbnail file
         try {
           await fs.access(thumbnailPath);
-          console.log(`Deleting file: ${thumbnailPath}`);
           await fs.unlink(thumbnailPath);
         } catch (error) {
           console.error(
@@ -113,7 +116,6 @@ export default async function handler(req, res) {
           // Copy the new image from the old path to the new path
           fs.copyFile(oldPath, newPath, (moveErr) => {
             if (moveErr) {
-              console.log(moveErr);
               return res.status(500).json({ message: "File move failed." });
             }
           });
@@ -128,7 +130,6 @@ export default async function handler(req, res) {
             const oldImagePath = path.join(projectDirectory, oldImage);
             try {
               await fs.access(oldImagePath);
-              console.log(`Deleting file: ${oldImagePath}`);
               await fs.unlink(oldImagePath);
             } catch (error) {
               console.error(

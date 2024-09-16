@@ -2,6 +2,7 @@ import conn from "../../dbconfig/conn";
 import path from "path";
 import { IncomingForm } from "formidable";
 import fs from "fs";
+import { checkApiAuth } from "../../authmiddleware";
 
 export const config = {
   api: {
@@ -10,6 +11,10 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
+
   // Handling GET request for fetching contact details
   if (req.method == "POST") {
     try {
@@ -41,7 +46,6 @@ export default async function handler(req, res) {
 
         fs.copyFile(oldPaththumbnail, newPaththumbnail, async (moveErr1) => {
           if (moveErr1) {
-            console.log(moveErr1);
             res.status(500).json({ message: "Thumbnail Upload failed." });
           } else {
             fs.copyFile(oldPathpdf, newPathpdf, async (moveErr2) => {

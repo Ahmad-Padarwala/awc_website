@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 
 const Footer = () => {
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ const Footer = () => {
   const getData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/home/home-product-data/router`
       );
       const data = response.data;
@@ -51,7 +51,7 @@ const Footer = () => {
   const getSocialLinksData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/social-links/router`
       );
       setLoading(false);
@@ -64,13 +64,11 @@ const Footer = () => {
   const getSEOData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/setting/router`
       );
       setLoading(false);
       setSeoData(response.data[0]);
-      console.log(response.data[0]);
-      console.log("response.data[0]");
     } catch (error) {
       setLoading(false);
       console.error("Error fetching data:", error);

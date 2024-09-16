@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Header from "@/layouts/Header";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -168,7 +168,7 @@ const AddBlogCategory = () => {
       formData.append("category_image", addBlogCategory.category_image);
       formData.append("category_icon", addBlogCategory.category_icon);
 
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/blogcategory/router`,
         formData,
         {
@@ -181,7 +181,6 @@ const AddBlogCategory = () => {
       setLoading(false);
       getAllBlogCategoryData();
       router.push("/admin/blog-category");
-      console.log("object");
     } catch (error) {
       ErrorToast(error?.response?.data?.message);
       setLoading(false);
@@ -191,7 +190,7 @@ const AddBlogCategory = () => {
   const [getAllBlogCategory, setGetAllBlogCategory] = useState([]);
   const getAllBlogCategoryData = async () => {
     setLoading(true);
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/blogcategory/router`)
       .then((res) => {
         setGetAllBlogCategory(res.data);

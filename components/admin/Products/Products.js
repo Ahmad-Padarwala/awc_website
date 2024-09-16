@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Loading from "@/layouts/Loading";
 import Header from "@/layouts/Header";
 import DeleteModal from "@/layouts/DeleteModal";
@@ -50,7 +50,7 @@ const Products = () => {
   const deleteProductData = async (deleteId) => {
     setLoading(true);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/products/${deleteId}`
       );
       getAllProductData();
@@ -66,7 +66,7 @@ const Products = () => {
   //get all prod category
   const getProductategoryData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/productcategorychanges/router`
       );
       setGetCategoryData(response.data);
@@ -79,7 +79,7 @@ const Products = () => {
 
   //get all product data
   const getAllProductData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/products/router`)
       .then((res) => {
         setGetAllProduct(res.data);
@@ -96,7 +96,7 @@ const Products = () => {
   const productStatusChange = async (prodId, no) => {
     setLoading(true);
     try {
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/products/statuschanges/${prodId}/${no}`
       );
       getAllProductData();

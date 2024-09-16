@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import React, { useEffect, useState } from "react";
 
 const HeroSection = ({ setJobId, scrollToForm }) => {
@@ -8,7 +8,7 @@ const HeroSection = ({ setJobId, scrollToForm }) => {
   const getSEOData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/career/alljobs/router`
       );
       setLoading(false);

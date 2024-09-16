@@ -5,7 +5,7 @@ import HeroSection from "./HeroSection";
 import Products from "./Products";
 import Contact from "./Contact";
 import Footer from "@/layouts/Client/Footer";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Head from "next/head";
 
 const index = () => {
@@ -16,7 +16,7 @@ const index = () => {
   const getData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/home/home-product-data/router`
       );
       const data = response.data;
@@ -56,7 +56,7 @@ const index = () => {
   const getSEOData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/home/router`
       );
       setSeoData(response.data[0]);

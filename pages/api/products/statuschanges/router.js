@@ -1,5 +1,6 @@
 // pages/api/productCategoryStatus/[[...ids]].js
 
+import { checkApiAuth } from "../../authmiddleware";
 import conn from "../../dbconfig/conn";
 
 // export const config = {
@@ -9,6 +10,8 @@ import conn from "../../dbconfig/conn";
 //   }
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   if (req.method == "GET") {
     try {
       // Query the database

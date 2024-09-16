@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { useRouter } from "next/router";
 import Header from "@/layouts/Header";
 import Link from "next/link";
@@ -35,7 +35,7 @@ const EditBlogCategory = () => {
 
   //get data with id
   const getEditBlogCategory = async (cateId) => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/blogcategory/${cateId}`)
       .then((res) => {
         setEditBlogCategoryData(res.data[0]);
@@ -127,7 +127,7 @@ const EditBlogCategory = () => {
 
       formdata.append("category_image", editBlogCategoryData.category_image);
       formdata.append("category_icon", editBlogCategoryData.category_icon);
-      const result = await axios.patch(
+      const result = await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/blogcategory/${cateId}`,
         formdata
       );

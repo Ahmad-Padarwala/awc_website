@@ -1,6 +1,6 @@
 import Header from "@/layouts/Header";
 import Loading from "@/layouts/Loading";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import EditGallery from "./EditGallery";
@@ -41,7 +41,7 @@ const Gallery = () => {
   const [getAllGalleryCategory, setGetAllGalleryCategory] = useState([]);
 
   const getAllGalleryCategoryData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/gallerycategory/router`)
       .then((res) => {
         setGetAllGalleryCategory(res.data);
@@ -57,7 +57,7 @@ const Gallery = () => {
   const [galleryData, setGalleryData] = useState([]);
 
   const getGalleryData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/gallery/router`)
       .then((res) => {
         setGalleryData(res.data);
@@ -140,7 +140,7 @@ const Gallery = () => {
   const handleDelete = async (deleteGalleryImageId) => {
     try {
       // Perform the DELETE request to update the item
-      const res = await axios.delete(
+      const res = await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/gallery/${deleteGalleryImageId}`,
         {
           headers: {
@@ -182,12 +182,9 @@ const Gallery = () => {
 
     try {
       // Make a DELETE request to the new API route
-      const res = await axios.delete(
+      const res = await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/gallery/${selectedCategory}`
       );
-
-      console.log(res);
-
       if (res.status === 200) {
         SuccessToast("All Items in Category Deleted Successfully");
         getGalleryData();

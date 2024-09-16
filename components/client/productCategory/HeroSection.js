@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ const HeroSection = ({ cid, data }) => {
 
   const getCategory = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-category/${cid}`
       );
       setCategory(response.data[0]);

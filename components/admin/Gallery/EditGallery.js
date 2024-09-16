@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Toast, {
   ErrorToast,
   SuccessToast,
@@ -86,7 +86,7 @@ const EditGallery = ({ editedItem, onClose, onEditComplete }) => {
       }
 
       // Perform the PATCH request to update the item
-      const res = await axios.patch(
+      const res = await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/gallery/${editedItem.id}`,
         updatedFormData,
         {
@@ -110,7 +110,7 @@ const EditGallery = ({ editedItem, onClose, onEditComplete }) => {
   const [getAllGalleryCategory, setGetAllGalleryCategory] = useState([]);
 
   const getAllGalleryCategoryData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/gallerycategory/router`)
       .then((res) => {
         setGetAllGalleryCategory(res.data);

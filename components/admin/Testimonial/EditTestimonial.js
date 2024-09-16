@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Editor } from "@tinymce/tinymce-react";
 import Toast, { ErrorToast, WarningToast } from "@/layouts/toast/Toast";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 const EditorApi = process.env.NEXT_PUBLIC_EDITOR_API;
 import { useRouter } from "next/router";
 
@@ -30,7 +30,7 @@ const EditTestimonial = () => {
     const getPerTestimonialData = async (id) => {
       try {
         const url = `${process.env.NEXT_PUBLIC_API_URL}/testimonial/${id}`;
-        const response = await axios.get(url);
+        const response = await axiosInstance.get(url);
         const fetchedData = response.data[0];
         setEditTestimonialData({
           ...fetchedData,
@@ -183,7 +183,7 @@ const EditTestimonial = () => {
       formData.append("testimonial_rating", ratingSlider);
 
       formData.append("product_id", editTestimonialData.product_id);
-      const res = await axios.put(
+      const res = await axiosInstance.put(
         `${process.env.NEXT_PUBLIC_API_URL}/testimonial/${testimonialId}`,
         formData,
         {
@@ -204,7 +204,7 @@ const EditTestimonial = () => {
   const [getProductData, setGetProductData] = useState([]);
 
   const getAllProductData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/products/router`)
       .then((res) => {
         setGetProductData(res.data);

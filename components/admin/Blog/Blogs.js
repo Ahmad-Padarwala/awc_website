@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Loading from "@/layouts/Loading";
 import Header from "@/layouts/Header";
 import DeleteModal from "@/layouts/DeleteModal";
@@ -49,7 +49,7 @@ const Blogs = () => {
   const deleteBlogData = async (deleteId) => {
     setLoading(true);
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/blog/${deleteId}`);
+      await axiosInstance.delete(`${process.env.NEXT_PUBLIC_API_URL}/blog/${deleteId}`);
       getAllBlogData();
       getBlogCategoryData();
       setLoading(false);
@@ -63,7 +63,7 @@ const Blogs = () => {
   // get all blog category
   const getBlogCategoryData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/blogcategory/router`
       );
       setGetCategoryData(response.data);
@@ -76,7 +76,7 @@ const Blogs = () => {
 
   // get all blog data
   const getAllBlogData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/blog/router`)
       .then((res) => {
         setGetAllBlogs(res.data);
@@ -93,7 +93,7 @@ const Blogs = () => {
   const blogStatusChange = async (blogId, no) => {
     setLoading(true);
     try {
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/blog/statuschanges/${blogId}/${no}`
       );
       getAllBlogData();

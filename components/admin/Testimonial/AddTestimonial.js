@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Editor } from "@tinymce/tinymce-react";
 import Toast, { ErrorToast, WarningToast } from "@/layouts/toast/Toast";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 const EditorApi = process.env.NEXT_PUBLIC_EDITOR_API;
 import { useRouter } from "next/router";
 
@@ -149,7 +149,7 @@ const AddTestimonial = () => {
       );
       formData.append("product_id", addTestimonialData.product_id);
 
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/testimonial/router`,
         formData,
         {
@@ -171,7 +171,7 @@ const AddTestimonial = () => {
   const [getProductData, setGetProductData] = useState([]);
 
   const getAllProductData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/products/router`)
       .then((res) => {
         setGetProductData(res.data);

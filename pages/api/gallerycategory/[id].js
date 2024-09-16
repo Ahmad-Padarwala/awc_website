@@ -1,8 +1,11 @@
 // api/category/[id].js
 
+import { checkApiAuth } from "../authmiddleware";
 import conn from "../dbconfig/conn";
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   const { id } = req.query; // Get the dynamic ID from the URL parameter
 
   if (req.method === "GET") {

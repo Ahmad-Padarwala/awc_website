@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "@/layouts/Client/Navbar";
 import Footer from "@/layouts/Client/Footer";
 import HeroSection from "./HeroSection";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Head from "next/head";
 import Watshapp from "@/layouts/Client/Watshapp";
 
@@ -13,12 +13,11 @@ const index = () => {
   const getSEOData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/contact/router`
       );
       setLoading(false);
       setSeoData(response.data[0]);
-      console.log(response.data[0]);
     } catch (error) {
       setLoading(false);
       console.error("Error fetching data:", error);

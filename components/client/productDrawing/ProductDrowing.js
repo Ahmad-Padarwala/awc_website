@@ -1,11 +1,10 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 const ProductDrowing = () => {
   const router = useRouter();
-  console.log(router.query);
   const { productType, productId } = router.query;
   const [loading, setLoading] = useState(true);
   const [allDrawings, setAllDrawings] = useState([]);
@@ -13,10 +12,9 @@ const ProductDrowing = () => {
   const getProductDrawing = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-view/getproductdrawing/${productId}`
       );
-      console.log(response.data);
       setAllDrawings(response.data);
       setLoading(false);
     } catch (error) {

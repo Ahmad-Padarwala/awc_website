@@ -1,9 +1,8 @@
 import Header from "@/layouts/Header";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Editor } from "@tinymce/tinymce-react";
 import Toast, { ErrorToast, WarningToast } from "@/layouts/toast/Toast";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { useRouter } from "next/router";
 
 const AddTestimonial = () => {
@@ -45,8 +44,6 @@ const AddTestimonial = () => {
       setLoading(false);
       return;
     }
-
-    console.log(addTestimonialData);
     try {
 
       const data =  {
@@ -55,7 +52,7 @@ const AddTestimonial = () => {
         product_id : addTestimonialData.product_id,
       }
       
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/videotestimonial/router`,
         data
       );
@@ -72,7 +69,7 @@ const AddTestimonial = () => {
   const [getProductData, setGetProductData] = useState([]);
 
   const getAllProductData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/products/router`)
       .then((res) => {
         setGetProductData(res.data);

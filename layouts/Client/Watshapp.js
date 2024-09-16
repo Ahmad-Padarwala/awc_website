@@ -1,18 +1,15 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 
 const Watshapp = () => {
   const [socialLinks, setSocialLinks] = useState([]);
   const getSocialLinksData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/social-links/router`
       );
       setSocialLinks(response.data[0]);
-      console.log(response.data[0]);
-      console.log("object");
     } catch (error) {}
   };
 

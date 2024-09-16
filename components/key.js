@@ -1,0 +1,1 @@
+export const Api_keys = process.env.NEXT_PUBLIC_API_KEY;

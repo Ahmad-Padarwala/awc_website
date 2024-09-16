@@ -3,6 +3,7 @@ import conn from "../dbconfig/conn";
 import path from "path";
 import { IncomingForm } from "formidable";
 import fs from "fs";
+import { checkApiAuth } from "../authmiddleware";
 
 const copyFileAsync = util.promisify(fs.copyFile);
 
@@ -13,6 +14,8 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   if (req.method === "POST") {
     const form = new IncomingForm();
     form.parse(req, async (err, fields, files) => {

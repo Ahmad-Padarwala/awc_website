@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Toast, { SuccessToast } from "@/layouts/toast/Toast";
@@ -28,7 +28,7 @@ const HeroSection = () => {
   const getSocialLinksData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/social-links/router`
       );
       setLoading(false);
@@ -83,7 +83,7 @@ const HeroSection = () => {
       formdata.append("number", addFormData.number);
       formdata.append("message", addFormData.message);
 
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/client/contact/contactform/router`,
         formdata
       );
@@ -104,7 +104,7 @@ const HeroSection = () => {
   useEffect(() => {
     const checkEmail = async () => {
       try {
-        const res = await axios.get(
+        const res = await axiosInstance.get(
           `${process.env.NEXT_PUBLIC_API_URL}/client/contact/contactform/router`
         );
 

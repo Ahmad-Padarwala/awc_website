@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Header from "@/layouts/Header";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -35,10 +35,9 @@ const AddProdCategory = () => {
   const getActiveCategoryData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/productcategorychanges/router`
       );
-      console.log(response.data[0]);
       setGetActiveCateData(response.data);
       setLoading(false);
     } catch (err) {
@@ -141,7 +140,7 @@ const AddProdCategory = () => {
       };
 
       const url = `${process.env.NEXT_PUBLIC_API_URL}/productcategory/router`;
-      const res = await axios.post(url, formdata, config);
+      const res = await axiosInstance.post(url, formdata, config);
       setLoading(false);
       router.push("/admin/product-category");
     } catch (error) {

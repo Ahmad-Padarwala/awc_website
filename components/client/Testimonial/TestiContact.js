@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 
 const TestiContact = () => {
   const [loading, setLoading] = useState(true);
@@ -9,10 +9,9 @@ const TestiContact = () => {
   const getTestimonial = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/testimonials/alltestimonials/router`
       );
-      console.log(response.data);
       setTestimonial(response.data);
       setLoading(false);
     } catch (error) {
@@ -24,10 +23,9 @@ const TestiContact = () => {
   const getVideoTestimonial = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/videotestimonials/alltestimonials/router`
       );
-      console.log(response.data);
       setVideoTestimonial(response.data);
       setLoading(false);
     } catch (error) {
@@ -144,7 +142,6 @@ const TestiContact = () => {
             </div>
             <div className={testimonial.length ? "video_testimonial" : ""}>
               {Videotestimonial.map((item, idx) => {
-                console.log(item);
                 return (
                   <div>
                     <iframe

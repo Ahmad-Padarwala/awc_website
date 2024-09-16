@@ -1,8 +1,8 @@
+import axiosInstance from "@/components/utils/axiosInstance";
 import DeleteModal from "@/layouts/DeleteModal";
 import Header from "@/layouts/Header";
 import Loading from "@/layouts/Loading";
 import Toast, { ErrorToast, SuccessToast } from "@/layouts/toast/Toast";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Applications = () => {
@@ -35,7 +35,7 @@ const Applications = () => {
 
   //get or fetch all data start
   const getApplicationData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/application/router`)
       .then((res) => {
         setGetApplication(res.data);
@@ -101,7 +101,7 @@ const Applications = () => {
   const deleteApplicationData = async (deleteId, dataType) => {
     setLoading(true);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/${dataType}/${deleteId}`
       );
       // Move closeDeleteModal and SuccessToast here to ensure they are called after the deletion is successful
@@ -148,9 +148,8 @@ const Applications = () => {
       email: email,
       comment: comment,
     };
-    console.log(mailData);
     try {
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/application/${feedbackId}`,
         mailData
       );
@@ -171,7 +170,7 @@ const Applications = () => {
 
   //get or fetch all data start
   const getCareerData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/career/router`)
       .then((res) => {
         setGetCareer(res.data);
@@ -267,7 +266,7 @@ const Applications = () => {
     if (editMode && editItemId) {
       // Handle edit logic
       try {
-        await axios.patch(
+        await axiosInstance.patch(
           `${process.env.NEXT_PUBLIC_API_URL}/career/${editItemId}`,
           addJobData
         );
@@ -294,7 +293,7 @@ const Applications = () => {
     } else {
       // Handle add logic
       try {
-        await axios.post(
+        await axiosInstance.post(
           `${process.env.NEXT_PUBLIC_API_URL}/career/router`,
           addJobData
         );

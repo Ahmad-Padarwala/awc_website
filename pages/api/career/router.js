@@ -1,6 +1,9 @@
+import { checkApiAuth } from "../authmiddleware";
 import conn from "../dbconfig/conn";
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   // Handling POST request for adding career details
   if (req.method === "POST") {
     const { role_name, job_desc, category, nop, duration } = req.body;

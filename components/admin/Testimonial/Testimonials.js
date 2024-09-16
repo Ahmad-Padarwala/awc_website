@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Header from "@/layouts/Header";
 import { useRouter } from "next/router";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Toast, { ErrorToast, SuccessToast } from "@/layouts/toast/Toast";
 import Loading from "@/layouts/Loading";
 import DeleteModal from "@/layouts/DeleteModal";
@@ -35,7 +35,7 @@ const Testimonials = () => {
 
   //get or fetch all testimonial data start
   const getAllTestimonialData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/testimonial/router`)
       .then((res) => {
         setGetAllTestimonial(res.data);
@@ -62,7 +62,7 @@ const Testimonials = () => {
   const testimonialStatusChange = async (testimonialId, no) => {
     setLoading(true);
     try {
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/testimonial/statuschanges/${testimonialId}/${no}`
       );
       getAllTestimonialData();
@@ -108,9 +108,8 @@ const Testimonials = () => {
   // delete code generate
   const deleteTestimonialData = async (deleteTestimonialId) => {
     setLoading(true);
-    console.log(deleteTestimonialId);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/testimonial/${deleteTestimonialId}`
       );
       // Move closeDeleteModal and SuccessToast here to ensure they are called after the deletion is successful
@@ -129,7 +128,7 @@ const Testimonials = () => {
   const [getProductData, setGetProductData] = useState([]);
 
   const getAllProductData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/products/router`)
       .then((res) => {
         setGetProductData(res.data);

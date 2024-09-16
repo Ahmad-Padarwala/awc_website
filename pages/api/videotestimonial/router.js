@@ -1,7 +1,10 @@
+import { checkApiAuth } from "../authmiddleware";
 import conn from "../dbconfig/conn";
 
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   // Handling POST request for adding a testimonial
   if (req.method === "POST") {
     console.log(req.body);

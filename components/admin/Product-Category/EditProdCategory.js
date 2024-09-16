@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { useRouter } from "next/router";
 import Header from "@/layouts/Header";
 import Link from "next/link";
@@ -35,7 +35,7 @@ const EditProdCategory = () => {
   //get active category
   const getActiveCategoryData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/productcategorychanges/router`
       );
       setGetActiveCateData(response.data);
@@ -49,11 +49,10 @@ const EditProdCategory = () => {
   //get category with id
   const getProductCategoryForEdit = async (id) => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/productcategory/${id}`
       );
       setEditProductCategoryData(response.data[0]);
-      console.log(response.data[0]);
       const keyString = response.data[0].meta_keyword;
       setEditMetaKeyword(keyString.trim() !== "" ? keyString.split(",") : []);
       const tagString = response.data[0].meta_tag;
@@ -157,10 +156,8 @@ const EditProdCategory = () => {
         },
       };
 
-      console.log(cateId);
-
       const url = `${process.env.NEXT_PUBLIC_API_URL}/productcategory/${cateId}`;
-      const res = await axios.patch(url, formdata, config);
+      const res = await axiosInstance.patch(url, formdata, config);
       window.scrollTo({ behavior: "smooth", top: 0 });
       setLoading(false);
       router.push("/admin/product-category");

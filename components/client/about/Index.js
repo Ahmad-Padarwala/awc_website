@@ -6,7 +6,7 @@ import VisionMision from "./VisionMision";
 import Timeline from "./Timeline";
 import Certificate from "./Certificate";
 import Footer from "@/layouts/Client/Footer";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Head from "next/head";
 import Watshapp from "@/layouts/Client/Watshapp";
 
@@ -17,7 +17,7 @@ const Index = () => {
   const getSEOData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/about/router`
       );
       setLoading(false);

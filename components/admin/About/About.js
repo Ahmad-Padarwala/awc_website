@@ -6,7 +6,7 @@ import Toast, {
   SuccessToast,
   WarningToast,
 } from "@/layouts/toast/Toast";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -85,7 +85,7 @@ const About = () => {
   const [getCertificate, setGetCertificate] = useState([]);
   //get or fetch all data start
   const getCertificateData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/about/certificates/router`)
       .then((res) => {
         setGetCertificate(res.data);
@@ -143,7 +143,7 @@ const About = () => {
   const deleteApplicationData = async (deleteId, dataType) => {
     setLoading(true);
     try {
-      await axios.delete(
+      await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/about/${dataType}/${deleteId}`
       );
       // Move closeDeleteModal and SuccessToast here to ensure they are called after the deletion is successful
@@ -238,7 +238,7 @@ const About = () => {
         formdata.append("pdf", CertificateData.pdf);
         formdata.append("thumbnail", CertificateData.thumbnail);
 
-        await axios.patch(
+        await axiosInstance.patch(
           `${process.env.NEXT_PUBLIC_API_URL}/about/certificates/${editCerItemId}`,
           formdata
         );
@@ -263,14 +263,13 @@ const About = () => {
       }
     } else {
       try {
-        console.log(CertificateData);
         setLoading(true);
         const formdata = new FormData();
         formdata.append("title", CertificateData.title);
         formdata.append("pdf", CertificateData.pdf);
         formdata.append("thumbnail", CertificateData.thumbnail);
 
-        await axios.post(
+        await axiosInstance.post(
           `${process.env.NEXT_PUBLIC_API_URL}/about/certificates/router`,
           formdata
         );
@@ -293,9 +292,7 @@ const About = () => {
 
   // Edit button click handler
   const editItem = (id) => {
-    console.log(id);
     const itemToEdit = getCertificate.find((item) => item.id == id);
-    console.log(itemToEdit.pdf);
     if (itemToEdit) {
       setCertificateData({
         pdf: itemToEdit?.pdf,
@@ -312,7 +309,7 @@ const About = () => {
   const StatusChange = async (cateId, no) => {
     try {
       setLoading(true);
-      const res = await axios.patch(
+      const res = await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/about/certificates/statuschanges/${cateId}/${no}`
       );
       setLoading(false);
@@ -326,7 +323,7 @@ const About = () => {
   // Video Section
   const [getVideos, setGetVideos] = useState([]);
   const getVideosData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/about/videos/router`)
       .then((res) => {
         setFilteredVideos(res.data);
@@ -406,7 +403,6 @@ const About = () => {
       WarningToast(errors[0]);
       return;
     }
-    console.log(addVideoData);
     // Check if it's in edit mode
     if (editVideoMode && editVideoItemId) {
       try {
@@ -417,7 +413,7 @@ const About = () => {
         formdata.append("link", addVideoData.link);
         formdata.append("thumbnail", addVideoData.thumbnail);
 
-        await axios.patch(
+        await axiosInstance.patch(
           `${process.env.NEXT_PUBLIC_API_URL}/about/videos/${editVideoItemId}`,
           formdata
         );
@@ -447,7 +443,7 @@ const About = () => {
         formdata.append("link", addVideoData.link);
         formdata.append("thumbnail", addVideoData.thumbnail);
 
-        await axios.post(
+        await axiosInstance.post(
           `${process.env.NEXT_PUBLIC_API_URL}/about/videos/router`,
           formdata
         );
@@ -488,7 +484,7 @@ const About = () => {
   const StatusVideoChange = async (cateId, no) => {
     try {
       setLoading(true);
-      const res = await axios.patch(
+      const res = await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/about/videos/statuschanges/${cateId}/${no}`
       );
       setLoading(false);

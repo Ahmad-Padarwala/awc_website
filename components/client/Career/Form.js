@@ -1,5 +1,5 @@
 import { ErrorToast, SuccessToast } from "@/layouts/toast/Toast";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import React, { useEffect, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -105,11 +105,12 @@ const Form = ({ jobId, setJobId, formref }) => {
     formdata.append("app_id", jobId);
 
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/client/career/router`,
         formdata
       );
       // Reset form fields
+      setLoading(false);
       setAddFormData({
         name: "",
         email: "",
@@ -132,7 +133,7 @@ const Form = ({ jobId, setJobId, formref }) => {
   useEffect(() => {
     const checkEmail = async () => {
       try {
-        const res = await axios.get(
+        const res = await axiosInstance.get(
           `${process.env.NEXT_PUBLIC_API_URL}/client/contact/contactform/router`
         );
 

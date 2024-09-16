@@ -1,5 +1,6 @@
 // pages/api/productCategoryStatus/[[...ids]].js
 
+import { checkApiAuth } from "@/pages/api/authmiddleware";
 import conn from "../../../dbconfig/conn";
 
 // export const config = {
@@ -9,12 +10,13 @@ import conn from "../../../dbconfig/conn";
 //   }
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
+  
   if (req.method == "PATCH") {
     try {
       // Query the database
-      const { ids } = req.query; // This will contain the array of IDs
-      console.log(ids);
-
+      const { ids } = req.query; 
       // Destructure the IDs from the array
       const [prod_id, status] = ids;
 

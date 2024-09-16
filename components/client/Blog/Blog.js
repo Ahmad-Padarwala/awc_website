@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -9,10 +9,9 @@ const Blog = () => {
   const getBlog = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/blog/allblogs/router`
       );
-      console.log(response.data);
       setBlogs(response.data);
       setLoading(false);
     } catch (error) {

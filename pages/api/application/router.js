@@ -1,6 +1,11 @@
+import { checkApiAuth } from "../authmiddleware";
 import conn from "../dbconfig/conn";
 
 export default async function handler(req, res) {
+
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
+
   // Handling GET request for fetching contact details
   if (req.method == "GET") {
     try {

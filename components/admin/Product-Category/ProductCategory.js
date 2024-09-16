@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Link from "next/link";
 import Header from "@/layouts/Header";
 import DeleteModal from "@/layouts/DeleteModal";
@@ -51,7 +51,7 @@ const ProductCategory = () => {
   //getall catergory data
   const getAllCategoryData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/productcategory/router`
       );
       setGetCategoryData(response.data);
@@ -67,7 +67,7 @@ const ProductCategory = () => {
   const getActiveCategoryData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/productcategorychanges/router`
       );
       setGetActiveCateData(response.data);
@@ -96,7 +96,7 @@ const ProductCategory = () => {
       getActiveCategoryData();
     } else {
       try {
-        const res = await axios.patch(
+        const res = await axiosInstance.patch(
           `${process.env.NEXT_PUBLIC_API_URL}/productcategorychanges/${cateId}/${no}`
         );
         getAllCategoryData();
@@ -121,7 +121,7 @@ const ProductCategory = () => {
       ErrorToast("Cannot delete this data because it connect each other");
     } else {
       try {
-        const res = await axios.delete(
+        const res = await axiosInstance.delete(
           `${process.env.NEXT_PUBLIC_API_URL}/productcategory/${deleteId}`
         );
         setIsDeleteModalOpen(false);

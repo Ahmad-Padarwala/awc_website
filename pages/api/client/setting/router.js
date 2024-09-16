@@ -1,9 +1,12 @@
+import { checkApiAuth } from "../../authmiddleware";
 import conn from "../../dbconfig/conn";
 
 export default async function handler(req, res) {
-  if (req.method == "GET") {
-    const { username, password } = req.body;
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
 
+
+  if (req.method == "GET") {
     try {
       // Query the database
       const q = `select * from user`;

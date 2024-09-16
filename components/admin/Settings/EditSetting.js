@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRouter } from "next/router";
 import Header from "@/layouts/Header";
@@ -147,7 +147,7 @@ const EditSetting = () => {
       formdata.append("favicon", generalData.favicon);
       formdata.append("logo", generalData.logo);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/settings/${1}`,
         formdata
       );
@@ -163,10 +163,9 @@ const EditSetting = () => {
   const getGeneralData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/settings/${1}`
       );
-      console.log(response.data);
       setGeneralData({
         email: response.data[0].email,
         number: response.data[0].number,
@@ -194,7 +193,6 @@ const EditSetting = () => {
   // ADD SOCIAL DATA
   const addSocialData = async (e) => {
     e.preventDefault();
-    console.log(socialData);
     window.scrollTo({ behavior: "smooth", top: 0 });
     setLoading(true);
     try {
@@ -206,7 +204,7 @@ const EditSetting = () => {
       formdata.append("youtube", socialData.youtube);
       formdata.append("linkedin", socialData.linkedin);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/settings/social/${1}`,
         formdata
       );
@@ -222,10 +220,9 @@ const EditSetting = () => {
   const getSocialData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/settings/social/${1}`
       );
-      console.log(response.data);
       setSocialData({
         whatsapp: response.data[0].whatsapp_link,
         facebook: response.data[0].facebook_link,
@@ -282,7 +279,6 @@ const EditSetting = () => {
   // ADD SOCIAL DATA
   const addSEOData = async (e) => {
     e.preventDefault();
-    console.log(seoData);
     window.scrollTo({ behavior: "smooth", top: 0 });
     setLoading(true);
     try {
@@ -320,14 +316,13 @@ const EditSetting = () => {
       formdata.append("privacy_desc", seoData.privacy_desc);
       formdata.append("privacy_canonical", seoData.privacy_canonical);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/settings/seo/${1}`,
         formdata
       );
       setLoading(false);
       toast.success("Data updated successfully!");
     } catch (error) {
-      console.log("object");
       ErrorToast(error?.response?.data?.message);
       setLoading(false);
     }
@@ -337,10 +332,9 @@ const EditSetting = () => {
   const getSeoData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/settings/seo/${1}`
       );
-      console.log(response.data);
       const homekw = response.data[0].home_keyword;
       const aboutkw = response.data[0].about_keyword;
       const productkw = response.data[0].product_keyword;
@@ -404,7 +398,6 @@ const EditSetting = () => {
   // ADD SOCIAL DATA
   const addGlobalData = async (e) => {
     e.preventDefault();
-    console.log(globalData);
     window.scrollTo({ behavior: "smooth", top: 0 });
     setLoading(true);
     try {
@@ -412,7 +405,7 @@ const EditSetting = () => {
       formdata.append("header", globalData.header);
       formdata.append("footer", globalData.footer);
 
-      await axios.patch(
+      await axiosInstance.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/settings/global/${1}`,
         formdata
       );
@@ -428,10 +421,9 @@ const EditSetting = () => {
   const getSocialGlobal = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/settings/global/${1}`
       );
-      console.log(response.data);
       setGlobalData({
         header: response.data[0].header,
         footer: response.data[0].footer,

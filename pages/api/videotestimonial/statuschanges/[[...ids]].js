@@ -1,6 +1,9 @@
+import { checkApiAuth } from "../../authmiddleware";
 import conn from "../../dbconfig/conn";
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
   // Handling PATCH request for updating testimonial_video status
   if (req.method == "PATCH") {
     try {

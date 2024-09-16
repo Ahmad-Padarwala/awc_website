@@ -2,8 +2,8 @@ import conn from "../../dbconfig/conn";
 import path from "path";
 import { IncomingForm } from "formidable";
 import nodemailer from "nodemailer";
-
 import fs from "fs";
+import { checkApiAuth } from "../../authmiddleware";
 
 export const config = {
   api: {
@@ -12,6 +12,9 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  const isAuthenticated = checkApiAuth(req, res);
+  if (!isAuthenticated) return;
+
   if (req.method == "POST") {
     try {
       const form = new IncomingForm();
@@ -45,9 +48,8 @@ export default async function handler(req, res) {
         const oldPathResume = files.resume[0].filepath; // Access the path of the uploaded Resume
 
         // new path and name for the Resume
-        const nFileNameResume = `${Date.now()}.${
-          files.resume[0].originalFilename
-        }`;
+        const nFileNameResume = `${Date.now()}.${files.resume[0].originalFilename
+          }`;
 
         // remove spaces from the image name
         const newFileNameResume = nFileNameResume.replace(/\s/g, "");
@@ -68,7 +70,6 @@ export default async function handler(req, res) {
           } else {
             // Extracting fields from the request
             const { name, email, number, salary, message, app_id } = fields;
-
             // SQL query for inserting data into the testimonial table
             const insertQuery =
               "INSERT INTO `contact_form`(`name`, `email`, `mobile`, `message`, `salary`, `resume`, `app_id`, `identify_status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -110,9 +111,7 @@ export default async function handler(req, res) {
 
       const q =
         "SELECT `carrer_title`, `carrer_keyword`, `carrer_desc`, `carrer_canonical` FROM `pages_seo`";
-      console.log(q);
       const [rows] = await conn.query(q);
-      console.log(rows);
       // Process the data and send the response
       res.status(200).json(rows);
     } catch (err) {

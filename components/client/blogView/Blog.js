@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ const Blog = ({ bid }) => {
   const getBlogData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/blogview/${bid}`
       );
       setBlog(response.data[0]);
@@ -27,7 +27,7 @@ const Blog = ({ bid }) => {
   const releatedBlogs = async (blogId) => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/blogview/reletedblog/${blogId}`
       );
       setReletedblog(response.data);

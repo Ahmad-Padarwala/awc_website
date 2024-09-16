@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import Link from "next/link";
-import axios from "axios";
 import { useRouter } from "next/router";
+import axiosInstance from "@/components/utils/axiosInstance";
 
 const Navbar = () => {
   const [seoData, setSeoData] = useState([]);
@@ -14,7 +14,7 @@ const Navbar = () => {
   const getSEOData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/setting/router`
       );
       setLoading(false);
@@ -28,7 +28,7 @@ const Navbar = () => {
   const getSocialLinksData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/social-links/router`
       );
       setLoading(false);

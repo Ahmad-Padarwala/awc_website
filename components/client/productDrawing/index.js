@@ -9,7 +9,6 @@ import ProductDrowing from "./ProductDrowing";
 const index = ({ pid }) => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  console.log(pid);
   return (
     <>
       {loading ? (

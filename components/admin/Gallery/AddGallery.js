@@ -1,9 +1,8 @@
 import Header from "@/layouts/Header";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Editor } from "@tinymce/tinymce-react";
 import Toast, { ErrorToast, WarningToast } from "@/layouts/toast/Toast";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { useRouter } from "next/router";
 
 const AddGallery = () => {
@@ -217,7 +216,7 @@ const AddGallery = () => {
         });
       });
 
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/gallery/router`,
         formData,
         {
@@ -239,7 +238,7 @@ const AddGallery = () => {
   const [getAllGalleryCategory, setGetAllGalleryCategory] = useState([]);
 
   const getAllGalleryCategoryData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/gallerycategory/router`)
       .then((res) => {
         setGetAllGalleryCategory(res.data);

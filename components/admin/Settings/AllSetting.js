@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import { useRouter } from "next/router";
 import Header from "@/layouts/Header";
 import Loading from "@/layouts/Loading";
@@ -25,7 +25,7 @@ const AllSetting = () => {
 
   //ALL USER DATA GETTING
   const getAllUserData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/settings/${1}`)
       .then((res) => {
         setUserData(res.data[0]);
@@ -37,7 +37,7 @@ const AllSetting = () => {
       });
   };
   const getAllSettingData = async () => {
-    await axios
+    await axiosInstance
       .get(`${process.env.NEXT_PUBLIC_API_URL}/settings/social/router`)
       .then((res) => {
         setSettingData(res.data[0]);

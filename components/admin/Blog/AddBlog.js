@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRouter } from "next/router";
 import Header from "@/layouts/Header";
@@ -7,6 +6,7 @@ import Loading from "@/layouts/Loading";
 import Link from "next/link";
 const EditorApi = process.env.NEXT_PUBLIC_EDITOR_API;
 import Toast, { ErrorToast } from "@/layouts/toast/Toast";
+import axiosInstance from "@/components/utils/axiosInstance";
 
 const AddBlog = () => {
   const [getActiveCateData, setGetActiveCateData] = useState([]);
@@ -34,7 +34,7 @@ const AddBlog = () => {
   const getActiveCategoryData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/blogcategory/router`
       );
       setGetActiveCateData(response.data);
@@ -52,9 +52,6 @@ const AddBlog = () => {
       ...prevData,
       blog_description: content,
     }));
-
-    // Log the content of the editor
-    console.log(content);
   };
 
   // end
@@ -109,7 +106,7 @@ const AddBlog = () => {
       formdata.append("meta_tag", addMetaTag);
       formdata.append("meta_keyword", addMetaKeyword);
 
-      await axios.post(
+      await axiosInstance.post(
         `${process.env.NEXT_PUBLIC_API_URL}/blog/router`,
         formdata
       );

@@ -3,7 +3,7 @@ import Navbar from "@/layouts/Client/Navbar";
 import HeroSection from "./HeroSection";
 import Footer from "@/layouts/Client/Footer";
 import Tabs from "./Tabs";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Watshapp from "@/layouts/Client/Watshapp";
@@ -17,10 +17,9 @@ const index = ({ pid }) => {
   const getProductData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/product-view/getproduct/${productId}`
       );
-      console.log(response.data[0]);
       setProducts(response.data[0]);
       setLoading(false);
     } catch (error) {

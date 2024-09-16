@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 import React, { useEffect, useState } from "react";
 import "react-multi-carousel/lib/styles.css";
 
@@ -10,7 +10,7 @@ const Certificate = () => {
   const getVideos = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/videos/router`
       );
       setVideos(response.data);
@@ -24,7 +24,7 @@ const Certificate = () => {
   const getCertificates = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/certificate/router`
       );
       setCertificate(response.data);
