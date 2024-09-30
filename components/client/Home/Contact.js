@@ -186,7 +186,7 @@ const Contact = () => {
                     onSubmit={saveData}
                   >
                     <div className="form-field">
-                      <label for="name" className="form-label">
+                      <label htmlFor="name" className="form-label">
                         Your Name: <small>*</small>
                       </label>
                       <input
@@ -200,7 +200,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="form-field">
-                      <label for="email" className="form-label">
+                      <label htmlFor="email" className="form-label">
                         Your Email: <small>*</small>
                       </label>
                       <input
@@ -214,7 +214,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="form-field">
-                      <label for="number" className="form-label">
+                      <label htmlFor="number" className="form-label">
                         Mobile No.:
                       </label>
                       <input
@@ -228,7 +228,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="form-field">
-                      <label for="message" className="form-label">
+                      <label htmlFor="message" className="form-label">
                         Message <small>*</small>
                       </label>
                       <textarea

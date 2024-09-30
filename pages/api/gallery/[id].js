@@ -4,6 +4,7 @@ import { IncomingForm } from "formidable";
 import fs from "fs";
 import { unlink, copyFile } from "fs/promises"; // Import copyFile function
 import { checkApiAuth } from "../authmiddleware";
+import axiosInstance from "@/components/utils/axiosInstance";
 
 export const config = {
   api: {
@@ -212,7 +213,7 @@ export default async function handler(req, res) {
               updatedFormData.append("gallery_image", selectedImage);
             }
 
-            const res = await axios.patch(
+            const res = await axiosInstance.patch(
               `${process.env.NEXT_PUBLIC_API_URL}/gallery/${categoryId}`,
               updatedFormData,
               {

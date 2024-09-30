@@ -67,6 +67,7 @@ const Footer = () => {
       const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/setting/router`
       );
+      console.log(response.data[0])
       setLoading(false);
       setSeoData(response.data[0]);
     } catch (error) {
@@ -188,7 +189,7 @@ const Footer = () => {
                           viewBox="0 0 512 512"
                           fill="none"
                         >
-                          <g clip-path="url(#clip0_84_15698)">
+                          <g clipPath="url(#clip0_84_15698)">
                             <rect width="512" height="512" rx="60"></rect>
                             <path
                               fill="#000"
@@ -215,7 +216,7 @@ const Footer = () => {
                           viewBox="0 0 512 512"
                           fill="none"
                         >
-                          <g clip-path="url(#clip0_84_15698)">
+                          <g clipPath="url(#clip0_84_15698)">
                             <rect width="512" height="512" rx="60"></rect>
                             <path
                               fill="#000"

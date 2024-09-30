@@ -160,7 +160,7 @@ const HeroSection = () => {
             <form className="contact-form" method="post" onSubmit={saveData}>
               <div className="form-field">
                 <label
-                  for="name"
+                  htmlFor="name"
                   className="form-label"
                   id="form-lable-contact"
                 >
@@ -178,7 +178,7 @@ const HeroSection = () => {
               </div>
               <div className="form-field">
                 <label
-                  for="email"
+                  htmlFor="email"
                   className="form-label"
                   id="form-lable-contact"
                 >
@@ -196,7 +196,7 @@ const HeroSection = () => {
               </div>
               <div className="form-field">
                 <label
-                  for="number"
+                  htmlFor="number"
                   className="form-label"
                   id="form-lable-contact"
                 >
@@ -214,7 +214,7 @@ const HeroSection = () => {
               </div>
               <div className="form-field">
                 <label
-                  for="message"
+                  htmlFor="message"
                   className="form-label"
                   id="form-lable-contact"
                 >
@@ -311,7 +311,7 @@ const HeroSection = () => {
                 {socialLinks && socialLinks.facebook_link ? (
                   <Link href={socialLinks.facebook_link} target="_blank">
                     <div className="social_icons" id="first_social_icon">
-                      <i class="fa-brands fa-facebook-f"></i>
+                      <i className="fa-brands fa-facebook-f"></i>
                     </div>
                   </Link>
                 ) : (
@@ -320,20 +320,20 @@ const HeroSection = () => {
                     target="_blank"
                   >
                     <div className="social_icons" id="first_social_icon">
-                      <i class="fa-brands fa-facebook-f"></i>
+                      <i className="fa-brands fa-facebook-f"></i>
                     </div>
                   </Link>
                 )}
                 {socialLinks && socialLinks.twiter_link ? (
                   <Link href={socialLinks.twiter_link} target="_blank">
                     <div className="social_icons">
-                      <i class="fa-brands fa-x-twitter"></i>
+                      <i className="fa-brands fa-x-twitter"></i>
                     </div>
                   </Link>
                 ) : (
                   <Link href="https://twitter.com/awc_india" target="_blank">
                     <div className="social_icons">
-                      <i class="fa-brands fa-x-twitter"></i>
+                      <i className="fa-brands fa-x-twitter"></i>
                     </div>
                   </Link>
                 )}
@@ -341,7 +341,7 @@ const HeroSection = () => {
                 {socialLinks && socialLinks.linkedin_link ? (
                   <Link href={socialLinks.linkedin_link} target="_blank">
                     <div className="social_icons">
-                      <i class="fa-brands fa-linkedin-in"></i>
+                      <i className="fa-brands fa-linkedin-in"></i>
                     </div>
                   </Link>
                 ) : (
@@ -350,7 +350,7 @@ const HeroSection = () => {
                     target="_blank"
                   >
                     <div className="social_icons">
-                      <i class="fa-brands fa-linkedin-in"></i>
+                      <i className="fa-brands fa-linkedin-in"></i>
                     </div>
                   </Link>
                 )}
@@ -408,7 +408,7 @@ const HeroSection = () => {
                 {socialLinks && socialLinks.facebook_link ? (
                   <Link href={socialLinks.facebook_link} target="_blank">
                     <div className="social_icons" id="first_social_icon">
-                      <i class="fa-brands fa-facebook-f"></i>
+                      <i className="fa-brands fa-facebook-f"></i>
                     </div>
                   </Link>
                 ) : (
@@ -417,20 +417,20 @@ const HeroSection = () => {
                     target="_blank"
                   >
                     <div className="social_icons" id="first_social_icon">
-                      <i class="fa-brands fa-facebook-f"></i>
+                      <i className="fa-brands fa-facebook-f"></i>
                     </div>
                   </Link>
                 )}
                 {socialLinks && socialLinks.twiter_link ? (
                   <Link href={socialLinks.twiter_link} target="_blank">
                     <div className="social_icons">
-                      <i class="fa-brands fa-x-twitter"></i>
+                      <i className="fa-brands fa-x-twitter"></i>
                     </div>
                   </Link>
                 ) : (
                   <Link href="https://twitter.com/awc_india" target="_blank">
                     <div className="social_icons">
-                      <i class="fa-brands fa-x-twitter"></i>
+                      <i className="fa-brands fa-x-twitter"></i>
                     </div>
                   </Link>
                 )}
@@ -438,7 +438,7 @@ const HeroSection = () => {
                 {socialLinks && socialLinks.linkedin_link ? (
                   <Link href={socialLinks.linkedin_link} target="_blank">
                     <div className="social_icons">
-                      <i class="fa-brands fa-linkedin-in"></i>
+                      <i className="fa-brands fa-linkedin-in"></i>
                     </div>
                   </Link>
                 ) : (
@@ -447,7 +447,7 @@ const HeroSection = () => {
                     target="_blank"
                   >
                     <div className="social_icons">
-                      <i class="fa-brands fa-linkedin-in"></i>
+                      <i className="fa-brands fa-linkedin-in"></i>
                     </div>
                   </Link>
                 )}

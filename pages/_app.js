@@ -16,7 +16,7 @@ import "@/styles/client/ProductDrowing.css";
 import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "@/components/utils/axiosInstance";
 
 export default function App({ Component, pageProps }) {
   const [GlobalSeo, setGlobalSeo] = useState({});
@@ -34,10 +34,11 @@ export default function App({ Component, pageProps }) {
 
   const getData = async () => {
     try {
-      const response = await axios.get(
+      const response = await axiosInstance.get(
         `${process.env.NEXT_PUBLIC_API_URL}/client/setting/router`
       );
       setdata(response.data[0]);
+      console.log(response.data[0]);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

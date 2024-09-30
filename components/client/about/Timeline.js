@@ -90,23 +90,23 @@ const Timeline = () => {
         <div className="timeline-inner mt-8">
           <h5>Our Success Story</h5>
         </div>
-        <div class="process-wrapper">
+        <div className="process-wrapper">
           <div id="progress-bar-container">
             <ul>
-              <li class="step step01 active">
-                <div class="step-inner">2008</div>
+              <li className="step step01 active">
+                <div className="step-inner">2008</div>
               </li>
-              <li class="step step02">
-                <div class="step-inner">2011</div>
+              <li className="step step02">
+                <div className="step-inner">2011</div>
               </li>
-              <li class="step step03">
-                <div class="step-inner">2014</div>
+              <li className="step step03">
+                <div className="step-inner">2014</div>
               </li>
-              <li class="step step04">
-                <div class="step-inner">2015</div>
+              <li className="step step04">
+                <div className="step-inner">2015</div>
               </li>
-              <li class="step step05">
-                <div class="step-inner">2023</div>
+              <li className="step step05">
+                <div className="step-inner">2023</div>
               </li>
             </ul>
 
@@ -116,7 +116,7 @@ const Timeline = () => {
           </div>
 
           <div id="progress-content-section">
-            <div class="section-content discovery active">
+            <div className="section-content discovery active">
               <h3 className="mb-2">SEEDS OF INNOVATION</h3>
               <p>
                 In 2008, We Embarked on Our Journey as a Small Manufacturing
@@ -124,7 +124,7 @@ const Timeline = () => {
               </p>
             </div>
 
-            <div class="section-content strategy">
+            <div className="section-content strategy">
               <h3 className="mb-2">FOUNDING UMARGAON FACILITY</h3>
               <p>
                 2011, We Established Our Manufacturing Facility in Umargaon,
@@ -132,7 +132,7 @@ const Timeline = () => {
               </p>
             </div>
 
-            <div class="section-content creative">
+            <div className="section-content creative">
               <h3 className="mb-2">AWC EMERGES</h3>
               <p>
                 In 2014, We Rebranded Ourselves as AWC, Expanding Our Presence
@@ -140,7 +140,7 @@ const Timeline = () => {
               </p>
             </div>
 
-            <div class="section-content production">
+            <div className="section-content production">
               <h3 className="mb-2">BECOMING WATERPROOFING EXPERTS</h3>
               <p>
                 By 2015, We Transformed into a Full-Fledged Waterproofing
@@ -148,7 +148,7 @@ const Timeline = () => {
               </p>
             </div>
 
-            <div class="section-content analysis">
+            <div className="section-content analysis">
               <h3 className="mb-2">GRAND EXPANSION</h3>
               <p>
                 In the Memorable Year of 2023, We Established a Grand Lean

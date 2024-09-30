@@ -1931,7 +1931,7 @@ const EditProduct = () => {
                                 }
                               >
                                 <i className="fa-solid fa-floppy-disk"></i>
-                                {/* <i class="fa-solid fa-floppy-disk"></i>U */}
+                                {/* <i className="fa-solid fa-floppy-disk"></i>U */}
                               </button>
                               <button
                                 style={{

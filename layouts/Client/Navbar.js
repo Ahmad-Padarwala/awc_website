@@ -19,6 +19,7 @@ const Navbar = () => {
       );
       setLoading(false);
       setSeoData(response.data[0]);
+      console.log(response.data[0]);
     } catch (error) {
       setLoading(false);
       console.error("Error fetching data:", error);
@@ -172,7 +173,7 @@ const Navbar = () => {
                               viewBox="0 0 512 512"
                               fill="none"
                             >
-                              <g clip-path="url(#clip0_84_15698)">
+                              <g clipPath="url(#clip0_84_15698)">
                                 <rect width="512" height="512" rx="60"></rect>
                                 <path
                                   fill="#000"
@@ -203,7 +204,7 @@ const Navbar = () => {
                               viewBox="0 0 512 512"
                               fill="none"
                             >
-                              <g clip-path="url(#clip0_84_15698)">
+                              <g clipPath="url(#clip0_84_15698)">
                                 <rect width="512" height="512" rx="60"></rect>
                                 <path
                                   fill="#000"

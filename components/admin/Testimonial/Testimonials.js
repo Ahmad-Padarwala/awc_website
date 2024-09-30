@@ -262,7 +262,7 @@ const Testimonials = () => {
                           className="editbutton"
                           onClick={() => openViewModal(testimonial)}
                         >
-                          <i class="fa-solid fa-eye"></i>
+                          <i className="fa-solid fa-eye"></i>
                         </button>
                       </span>
                     </td>

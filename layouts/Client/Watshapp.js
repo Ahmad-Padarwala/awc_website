@@ -25,7 +25,7 @@ const Watshapp = () => {
             target="blank"
             aria-label="whatsapp"
           >
-            <i class="fa-brands fa-whatsapp"></i>
+            <i className="fa-brands fa-whatsapp"></i>
           </Link>
         ) : (
           <Link
@@ -33,7 +33,7 @@ const Watshapp = () => {
             target="blank"
             aria-label="whatsapp"
           >
-            <i class="fa-brands fa-whatsapp"></i>
+            <i className="fa-brands fa-whatsapp"></i>
           </Link>
         )}
       </div>

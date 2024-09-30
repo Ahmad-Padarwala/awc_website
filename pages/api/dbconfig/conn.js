@@ -5,7 +5,6 @@ const pool = mysql.createPool({
   user: "root",
   password: "",
   database: "awc_db",
-  connectionLimit: 10,
 });
 
 const conn = pool.promise();
